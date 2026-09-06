@@ -7,6 +7,7 @@
     <title>Pythagorean Theorem</title>
 
     <style>
+
         /* =========================================
            RESET
         ========================================= */
@@ -28,6 +29,7 @@
             color: #f8fafc;
             overflow-x: hidden;
         }
+
 
         /* =========================================
            BACKGROUND
@@ -53,6 +55,7 @@
 
                 #0f172a;
         }
+
 
         /* =========================================
            NAVIGATION
@@ -99,6 +102,7 @@
             color: #ffffff;
         }
 
+
         /* =========================================
            HERO
         ========================================= */
@@ -138,13 +142,14 @@
             line-height: 1.7;
         }
 
+
         /* =========================================
            EXPLANATION
         ========================================= */
 
         .explanation {
             max-width: 1000px;
-            margin: 30px auto 60px;
+            margin: 30px auto 35px;
 
             padding: 35px;
 
@@ -188,6 +193,70 @@
             color: #fbbf24;
         }
 
+
+        /* =========================================
+           SIDES EXPLANATION
+        ========================================= */
+
+        .sides-explanation {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background: rgba(30, 41, 59, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .sides-explanation h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .side-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .side-card {
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background: rgba(15, 23, 42, 0.6);
+
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .side-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .side-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .side-card-a h3 {
+            color: #60a5fa;
+        }
+
+        .side-card-b h3 {
+            color: #a78bfa;
+        }
+
+        .side-card-c h3 {
+            color: #fbbf24;
+        }
+
+
         /* =========================================
            INTERACTIVE AREA
         ========================================= */
@@ -209,6 +278,7 @@
 
             backdrop-filter: blur(15px);
         }
+
 
         /* =========================================
            CONTROLS
@@ -280,6 +350,7 @@
             border-color: #60a5fa;
         }
 
+
         /* =========================================
            CALCULATION
         ========================================= */
@@ -336,6 +407,7 @@
         .reset-button:hover {
             background: #475569;
         }
+
 
         /* =========================================
            TRIANGLE
@@ -430,6 +502,98 @@
             color: #94a3b8;
             font-size: 14px;
         }
+
+
+        /* =========================================
+           FIRST VISIT LANGUAGE MODAL
+        ========================================= */
+
+        .language-overlay {
+            position: fixed;
+            inset: 0;
+
+            z-index: 2000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(2, 6, 23, 0.78);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .language-modal {
+            width: 100%;
+            max-width: 430px;
+
+            padding: 35px;
+
+            border-radius: 24px;
+
+            background: rgba(30, 41, 59, 0.98);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+
+            text-align: center;
+        }
+
+        .language-modal h2 {
+            font-size: 29px;
+            margin-bottom: 12px;
+        }
+
+        .language-modal p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .first-language-option {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 14px 16px;
+
+            margin-bottom: 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+
+            background: rgba(15, 23, 42, 0.65);
+            color: #f8fafc;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            text-align: left;
+
+            transition: 0.2s;
+        }
+
+        .first-language-option:hover {
+            background: rgba(51, 65, 85, 0.9);
+
+            transform: translateY(-1px);
+        }
+
+        .first-language-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .first-language-option .flag {
+            font-size: 24px;
+        }
+
 
         /* =========================================
            LANGUAGE SELECTOR
@@ -538,6 +702,7 @@
             font-size: 21px;
         }
 
+
         /* =========================================
            FOOTER
         ========================================= */
@@ -552,11 +717,33 @@
             font-size: 14px;
         }
 
+
         /* =========================================
            MOBILE
         ========================================= */
 
         @media (max-width: 800px) {
+
+            body {
+                background: #18243a;
+            }
+
+            .background {
+                background:
+                    radial-gradient(
+                        circle at 15% 20%,
+                        rgba(59, 130, 246, 0.22),
+                        transparent 35%
+                    ),
+
+                    radial-gradient(
+                        circle at 85% 75%,
+                        rgba(139, 92, 246, 0.20),
+                        transparent 35%
+                    ),
+
+                    #18243a;
+            }
 
             nav {
                 padding: 18px 20px;
@@ -575,6 +762,15 @@
                 padding: 25px;
             }
 
+            .sides-explanation {
+                margin: 20px 20px 40px;
+                padding: 25px;
+            }
+
+            .side-cards {
+                grid-template-columns: 1fr;
+            }
+
             .interactive {
                 margin: 20px;
                 padding: 25px;
@@ -585,7 +781,14 @@
             .triangle-area {
                 min-height: 420px;
             }
+
+            .language-container {
+                bottom: 18px;
+                right: 18px;
+            }
+
         }
+
 
         @media (max-width: 500px) {
 
@@ -604,7 +807,17 @@
             .interactive {
                 padding: 20px;
             }
+
+            .language-modal {
+                padding: 28px 22px;
+            }
+
+            .language-modal h2 {
+                font-size: 25px;
+            }
+
         }
+
     </style>
 </head>
 
@@ -645,7 +858,7 @@
 
     <!-- =========================================
          HERO
-    ========================================== -->
+    ========================================= -->
 
     <main id="top">
 
@@ -694,6 +907,64 @@
                 This means that the square of side a plus the square
                 of side b is equal to the square of side c.
             </p>
+
+        </section>
+
+
+        <!-- =====================================
+             SIDES EXPLANATION
+        ====================================== -->
+
+        <section class="sides-explanation">
+
+            <h2 data-text="sidesTitle">
+                Catheti and Hypotenuse
+            </h2>
+
+            <div class="side-cards">
+
+                <div class="side-card side-card-a">
+
+                    <h3 data-text="cathetusATitle">
+                        Cathetus a
+                    </h3>
+
+                    <p data-text="cathetusAText">
+                        Side a is one of the two catheti.
+                        It forms the right angle together with side b.
+                    </p>
+
+                </div>
+
+
+                <div class="side-card side-card-b">
+
+                    <h3 data-text="cathetusBTitle">
+                        Cathetus b
+                    </h3>
+
+                    <p data-text="cathetusBText">
+                        Side b is the second cathetus.
+                        It also forms the right angle together with side a.
+                    </p>
+
+                </div>
+
+
+                <div class="side-card side-card-c">
+
+                    <h3 data-text="hypotenuseTitle">
+                        Hypotenuse c
+                    </h3>
+
+                    <p data-text="hypotenuseText">
+                        Side c is the hypotenuse.
+                        It is always opposite the right angle and is the longest side.
+                    </p>
+
+                </div>
+
+            </div>
 
         </section>
 
@@ -898,7 +1169,7 @@
                         <text
                             id="labelA"
                             class="side-label label-a"
-                            x="75"
+                            x="55"
                             y="185"
                         >
                             a = 3
@@ -908,7 +1179,7 @@
                             id="labelB"
                             class="side-label label-b"
                             x="230"
-                            y="310"
+                            y="325"
                         >
                             b = 4
                         </text>
@@ -916,8 +1187,8 @@
                         <text
                             id="labelC"
                             class="side-label label-c"
-                            x="270"
-                            y="155"
+                            x="300"
+                            y="145"
                         >
                             c = 5
                         </text>
@@ -1034,10 +1305,83 @@
 
 
     <!-- =========================================
+         FIRST VISIT LANGUAGE WINDOW
+    ========================================== -->
+
+    <div
+        class="language-overlay"
+        id="languageOverlay"
+    >
+
+        <div class="language-modal">
+
+            <h2 data-text="chooseLanguage">
+                Choose your language
+            </h2>
+
+            <p data-text="chooseLanguageDescription">
+                Select a language to continue.
+            </p>
+
+
+            <button
+                class="first-language-option"
+                data-language="en"
+            >
+
+                <span class="flag">
+                    🇬🇧
+                </span>
+
+                <span>
+                    English
+                </span>
+
+            </button>
+
+
+            <button
+                class="first-language-option"
+                data-language="de"
+            >
+
+                <span class="flag">
+                    🇩🇪
+                </span>
+
+                <span>
+                    Deutsch
+                </span>
+
+            </button>
+
+
+            <button
+                class="first-language-option"
+                data-language="es"
+            >
+
+                <span class="flag">
+                    🇪🇸
+                </span>
+
+                <span>
+                    Español
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
          JAVASCRIPT
     ========================================== -->
 
     <script>
+
 
         /* ========================================
            TRANSLATIONS
@@ -1047,15 +1391,20 @@
 
             en: {
 
-                logo: "Pythagorean Theorem",
+                logo:
+                    "Pythagorean Theorem",
 
-                home: "Home",
+                home:
+                    "Home",
 
-                theorem: "Theorem",
+                theorem:
+                    "Theorem",
 
-                interactiveNav: "Interactive",
+                interactiveNav:
+                    "Interactive",
 
-                title: "Pythagorean Theorem",
+                title:
+                    "Pythagorean Theorem",
 
                 subtitle:
                     "Discover how the Pythagorean theorem works through an interactive mathematical experience.",
@@ -1068,6 +1417,33 @@
 
                 formulaExplanation:
                     "This means that the square of side a plus the square of side b is equal to the square of side c.",
+
+
+                /* SIDES */
+
+                sidesTitle:
+                    "Catheti and Hypotenuse",
+
+                cathetusATitle:
+                    "Cathetus a",
+
+                cathetusAText:
+                    "Side a is one of the two catheti. It forms the right angle together with side b.",
+
+                cathetusBTitle:
+                    "Cathetus b",
+
+                cathetusBText:
+                    "Side b is the second cathetus. It also forms the right angle together with side a.",
+
+                hypotenuseTitle:
+                    "Hypotenuse c",
+
+                hypotenuseText:
+                    "Side c is the hypotenuse. It is always opposite the right angle and is the longest side.",
+
+
+                /* INTERACTIVE */
 
                 interactiveTitle:
                     "Try it yourself",
@@ -1094,7 +1470,16 @@
                     "The longest side c is the hypotenuse.",
 
                 footer:
-                    "Interactive Mathematics Project"
+                    "Interactive Mathematics Project",
+
+
+                /* LANGUAGE WINDOW */
+
+                chooseLanguage:
+                    "Choose your language",
+
+                chooseLanguageDescription:
+                    "Select a language to continue."
 
             },
 
@@ -1128,6 +1513,33 @@
                 formulaExplanation:
                     "Das bedeutet: Das Quadrat der Seite a plus das Quadrat der Seite b ist gleich dem Quadrat der Seite c.",
 
+
+                /* SIDES */
+
+                sidesTitle:
+                    "Katheten und Hypotenuse",
+
+                cathetusATitle:
+                    "Kathete a",
+
+                cathetusAText:
+                    "Die Seite a ist eine der beiden Katheten. Zusammen mit der Seite b bildet sie den rechten Winkel.",
+
+                cathetusBTitle:
+                    "Kathete b",
+
+                cathetusBText:
+                    "Die Seite b ist die zweite Kathete. Auch sie bildet zusammen mit der Seite a den rechten Winkel.",
+
+                hypotenuseTitle:
+                    "Hypotenuse c",
+
+                hypotenuseText:
+                    "Die Seite c ist die Hypotenuse. Sie liegt immer gegenüber dem rechten Winkel und ist die längste Seite.",
+
+
+                /* INTERACTIVE */
+
                 interactiveTitle:
                     "Probiere es selbst",
 
@@ -1153,7 +1565,16 @@
                     "Die längste Seite c ist die Hypotenuse.",
 
                 footer:
-                    "Interaktives Mathematikprojekt"
+                    "Interaktives Mathematikprojekt",
+
+
+                /* LANGUAGE WINDOW */
+
+                chooseLanguage:
+                    "Wähle deine Sprache",
+
+                chooseLanguageDescription:
+                    "Wähle eine Sprache, um fortzufahren."
 
             },
 
@@ -1187,6 +1608,33 @@
                 formulaExplanation:
                     "Esto significa que el cuadrado del lado a más el cuadrado del lado b es igual al cuadrado del lado c.",
 
+
+                /* SIDES */
+
+                sidesTitle:
+                    "Catetos e hipotenusa",
+
+                cathetusATitle:
+                    "Cateto a",
+
+                cathetusAText:
+                    "El lado a es uno de los dos catetos. Forma el ángulo recto junto con el lado b.",
+
+                cathetusBTitle:
+                    "Cateto b",
+
+                cathetusBText:
+                    "El lado b es el segundo cateto. También forma el ángulo recto junto con el lado a.",
+
+                hypotenuseTitle:
+                    "Hipotenusa c",
+
+                hypotenuseText:
+                    "El lado c es la hipotenusa. Siempre está frente al ángulo recto y es el lado más largo.",
+
+
+                /* INTERACTIVE */
+
                 interactiveTitle:
                     "Pruébalo tú mismo",
 
@@ -1212,7 +1660,16 @@
                     "El lado más largo c es la hipotenusa.",
 
                 footer:
-                    "Proyecto de Matemáticas Interactivo"
+                    "Proyecto de Matemáticas Interactivo",
+
+
+                /* LANGUAGE WINDOW */
+
+                chooseLanguage:
+                    "Elige tu idioma",
+
+                chooseLanguageDescription:
+                    "Selecciona un idioma para continuar."
 
             }
 
@@ -1225,11 +1682,14 @@
 
         const flags = {
 
-            en: "🇬🇧",
+            en:
+                "🇬🇧",
 
-            de: "🇩🇪",
+            de:
+                "🇩🇪",
 
-            es: "🇪🇸"
+            es:
+                "🇪🇸"
 
         };
 
@@ -1239,13 +1699,24 @@
         ======================================== */
 
         const languageButton =
-            document.getElementById("languageButton");
+            document.getElementById(
+                "languageButton"
+            );
 
         const languageMenu =
-            document.getElementById("languageMenu");
+            document.getElementById(
+                "languageMenu"
+            );
 
         const currentFlag =
-            document.getElementById("currentFlag");
+            document.getElementById(
+                "currentFlag"
+            );
+
+        const languageOverlay =
+            document.getElementById(
+                "languageOverlay"
+            );
 
 
         /* ========================================
@@ -1256,7 +1727,9 @@
             "click",
             function () {
 
-                languageMenu.classList.toggle("open");
+                languageMenu.classList.toggle(
+                    "open"
+                );
 
             }
         );
@@ -1273,9 +1746,48 @@
                         const language =
                             option.dataset.language;
 
-                        changeLanguage(language);
+                        changeLanguage(
+                            language
+                        );
 
-                        languageMenu.classList.remove("open");
+                        languageMenu.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* ========================================
+           FIRST VISIT LANGUAGE SELECTION
+        ======================================== */
+
+        document
+            .querySelectorAll(".first-language-option")
+            .forEach(function (option) {
+
+                option.addEventListener(
+                    "click",
+                    function () {
+
+                        const language =
+                            option.dataset.language;
+
+                        changeLanguage(
+                            language
+                        );
+
+
+                        localStorage.setItem(
+                            "languageSelected",
+                            "true"
+                        );
+
+
+                        languageOverlay.style.display =
+                            "none";
 
                     }
                 );
@@ -1291,6 +1803,7 @@
 
             const translation =
                 translations[language];
+
 
             document
                 .querySelectorAll("[data-text]")
@@ -1312,6 +1825,7 @@
             currentFlag.textContent =
                 flags[language];
 
+
             document.documentElement.lang =
                 language;
 
@@ -1332,22 +1846,34 @@
         ======================================== */
 
         const inputA =
-            document.getElementById("inputA");
+            document.getElementById(
+                "inputA"
+            );
 
         const inputB =
-            document.getElementById("inputB");
+            document.getElementById(
+                "inputB"
+            );
 
         const calculationLine1 =
-            document.getElementById("calculationLine1");
+            document.getElementById(
+                "calculationLine1"
+            );
 
         const calculationLine2 =
-            document.getElementById("calculationLine2");
+            document.getElementById(
+                "calculationLine2"
+            );
 
         const calculationLine3 =
-            document.getElementById("calculationLine3");
+            document.getElementById(
+                "calculationLine3"
+            );
 
         const calculationResult =
-            document.getElementById("calculationResult");
+            document.getElementById(
+                "calculationResult"
+            );
 
 
         function formatNumber(number) {
@@ -1362,10 +1888,14 @@
         function updateCalculation() {
 
             let a =
-                parseFloat(inputA.value);
+                parseFloat(
+                    inputA.value
+                );
 
             let b =
-                parseFloat(inputB.value);
+                parseFloat(
+                    inputB.value
+                );
 
 
             if (
@@ -1424,28 +1954,44 @@
         ======================================== */
 
         const triangle =
-            document.getElementById("triangle");
+            document.getElementById(
+                "triangle"
+            );
 
         const lineA =
-            document.getElementById("lineA");
+            document.getElementById(
+                "lineA"
+            );
 
         const lineB =
-            document.getElementById("lineB");
+            document.getElementById(
+                "lineB"
+            );
 
         const lineC =
-            document.getElementById("lineC");
+            document.getElementById(
+                "lineC"
+            );
 
         const rightAngle =
-            document.getElementById("rightAngle");
+            document.getElementById(
+                "rightAngle"
+            );
 
         const labelA =
-            document.getElementById("labelA");
+            document.getElementById(
+                "labelA"
+            );
 
         const labelB =
-            document.getElementById("labelB");
+            document.getElementById(
+                "labelB"
+            );
 
         const labelC =
-            document.getElementById("labelC");
+            document.getElementById(
+                "labelC"
+            );
 
 
         function updateTriangle(
@@ -1462,7 +2008,11 @@
             */
 
             const maxSide =
-                Math.max(a, b);
+                Math.max(
+                    a,
+                    b
+                );
+
 
             const scale =
                 210 / maxSide;
@@ -1567,11 +2117,20 @@
             );
 
 
-            /* Labels */
+            /* =================================
+               LABELS
+
+               The labels are deliberately
+               placed farther away from the
+               triangle lines.
+            ================================= */
+
+
+            /* A - further left */
 
             labelA.setAttribute(
                 "x",
-                "65"
+                "45"
             );
 
             labelA.setAttribute(
@@ -1580,6 +2139,8 @@
             );
 
 
+            /* B - further down */
+
             labelB.setAttribute(
                 "x",
                 100 + (width / 2) - 20
@@ -1587,18 +2148,20 @@
 
             labelB.setAttribute(
                 "y",
-                "315"
+                "335"
             );
 
 
+            /* C - further away from hypotenuse */
+
             labelC.setAttribute(
                 "x",
-                100 + (width * 0.55)
+                100 + (width * 0.62)
             );
 
             labelC.setAttribute(
                 "y",
-                280 - (height * 0.55)
+                280 - (height * 0.62) - 10
             );
 
 
@@ -1634,14 +2197,18 @@
         ======================================== */
 
         document
-            .getElementById("resetButton")
+            .getElementById(
+                "resetButton"
+            )
             .addEventListener(
                 "click",
                 function () {
 
-                    inputA.value = 3;
+                    inputA.value =
+                        3;
 
-                    inputB.value = 4;
+                    inputB.value =
+                        4;
 
                     updateCalculation();
 
@@ -1650,7 +2217,7 @@
 
 
         /* ========================================
-           LOAD SAVED LANGUAGE
+           LOAD LANGUAGE
         ======================================== */
 
         const savedLanguage =
@@ -1658,8 +2225,20 @@
                 "selectedLanguage"
             );
 
+        const languageSelected =
+            localStorage.getItem(
+                "languageSelected"
+            );
+
+
+        /*
+            If the user has already selected
+            a language before, use it and
+            don't show the first-visit window.
+        */
 
         if (
+            languageSelected === "true" &&
             savedLanguage &&
             translations[savedLanguage]
         ) {
@@ -1668,13 +2247,20 @@
                 savedLanguage
             );
 
+            languageOverlay.style.display =
+                "none";
+
         } else {
 
             /*
-                English is the default.
+                English is the default language
+                while the first-visit window
+                is visible.
             */
 
-            changeLanguage("en");
+            changeLanguage(
+                "en"
+            );
 
         }
 
