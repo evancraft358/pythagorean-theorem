@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pythagorean Theorem</title>
+
+    <style>
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           BACKGROUND
+        ========================================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(59, 130, 246, 0.18),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 75%,
+                    rgba(139, 92, 246, 0.16),
+                    transparent 30%
+                ),
+
+                #0f172a;
+        }
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+
+            width: 100%;
+            padding: 18px 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 95px 25px 45px;
+
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.05;
+
+            margin-bottom: 24px;
+
+            background: linear-gradient(
+                90deg,
+                #60a5fa,
+                #a78bfa
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #cbd5e1;
+
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           EXPLANATION
+        ========================================= */
+
+        .explanation {
+            max-width: 1000px;
+            margin: 30px auto 60px;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background: rgba(30, 41, 59, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .explanation h2 {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .explanation p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .formula {
+            text-align: center;
+
+            font-size: clamp(32px, 6vw, 55px);
+            font-weight: bold;
+
+            margin: 30px 0;
+        }
+
+        .formula .a {
+            color: #60a5fa;
+        }
+
+        .formula .b {
+            color: #a78bfa;
+        }
+
+        .formula .c {
+            color: #fbbf24;
+        }
+
+        /* =========================================
+           INTERACTIVE AREA
+        ========================================= */
+
+        .interactive {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+
+            padding: 35px;
+
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 35px;
+
+            border-radius: 24px;
+
+            background: rgba(30, 41, 59, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(15px);
+        }
+
+        /* =========================================
+           CONTROLS
+        ========================================= */
+
+        .controls h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .controls-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #e2e8f0;
+
+            font-weight: bold;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-wrapper span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .input-a span {
+            color: #60a5fa;
+        }
+
+        .input-b span {
+            color: #a78bfa;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+
+            font-size: 16px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #60a5fa;
+        }
+
+        /* =========================================
+           CALCULATION
+        ========================================= */
+
+        .calculation {
+            margin-top: 28px;
+
+            padding: 22px;
+
+            border-radius: 15px;
+
+            background: rgba(15, 23, 42, 0.65);
+
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .calculation h3 {
+            margin-bottom: 15px;
+        }
+
+        .calculation-line {
+            color: #cbd5e1;
+
+            line-height: 2;
+
+            font-size: 17px;
+        }
+
+        .calculation-result {
+            margin-top: 8px;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            color: #fbbf24;
+        }
+
+        .reset-button {
+            margin-top: 20px;
+
+            padding: 11px 18px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #334155;
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .reset-button:hover {
+            background: #475569;
+        }
+
+        /* =========================================
+           TRIANGLE
+        ========================================= */
+
+        .triangle-area {
+            min-height: 500px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .triangle-area h2 {
+            margin-bottom: 20px;
+        }
+
+        .triangle-container {
+            width: 100%;
+            max-width: 500px;
+            height: 360px;
+
+            position: relative;
+        }
+
+        .triangle-svg {
+            width: 100%;
+            height: 100%;
+
+            overflow: visible;
+        }
+
+        .triangle {
+            fill: rgba(59, 130, 246, 0.12);
+            stroke: #60a5fa;
+            stroke-width: 3;
+
+            transition: all 0.35s ease;
+        }
+
+        .side-a {
+            stroke: #60a5fa;
+            stroke-width: 5;
+        }
+
+        .side-b {
+            stroke: #a78bfa;
+            stroke-width: 5;
+        }
+
+        .side-c {
+            stroke: #fbbf24;
+            stroke-width: 5;
+        }
+
+        .side-label {
+            font-size: 20px;
+            font-weight: bold;
+
+            fill: white;
+
+            user-select: none;
+        }
+
+        .label-a {
+            fill: #60a5fa;
+        }
+
+        .label-b {
+            fill: #a78bfa;
+        }
+
+        .label-c {
+            fill: #fbbf24;
+        }
+
+        .right-angle {
+            fill: none;
+
+            stroke: white;
+            stroke-width: 2;
+
+            opacity: 0.7;
+        }
+
+        .triangle-info {
+            margin-top: 15px;
+
+            text-align: center;
+
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* =========================================
+           LANGUAGE SELECTOR
+        ========================================= */
+
+        .language-container {
+            position: fixed;
+
+            bottom: 25px;
+            right: 25px;
+
+            z-index: 1000;
+        }
+
+        .language-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 12px 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+
+            background: rgba(30, 41, 59, 0.94);
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            backdrop-filter: blur(12px);
+
+            transition: 0.2s;
+        }
+
+        .language-button:hover {
+            background: rgba(51, 65, 85, 0.96);
+        }
+
+        .language-menu {
+            position: absolute;
+
+            bottom: 55px;
+            right: 0;
+
+            min-width: 180px;
+
+            padding: 8px;
+
+            border-radius: 14px;
+
+            background: rgba(30, 41, 59, 0.98);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+
+            opacity: 0;
+
+            transform: translateY(10px);
+
+            pointer-events: none;
+
+            transition: 0.2s;
+        }
+
+        .language-menu.open {
+            opacity: 1;
+
+            transform: translateY(0);
+
+            pointer-events: auto;
+        }
+
+        .language-option {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 11px 12px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: transparent;
+            color: #e2e8f0;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .flag {
+            font-size: 21px;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            padding: 40px 20px 100px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 75px 20px 35px;
+            }
+
+            .explanation {
+                margin: 20px;
+                padding: 25px;
+            }
+
+            .interactive {
+                margin: 20px;
+                padding: 25px;
+
+                grid-template-columns: 1fr;
+            }
+
+            .triangle-area {
+                min-height: 420px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .formula {
+                font-size: 32px;
+            }
+
+            .triangle-container {
+                height: 280px;
+            }
+
+            .interactive {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <nav>
+
+        <div class="logo" data-text="logo">
+            Pythagorean Theorem
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#top" data-text="home">
+                Home
+            </a>
+
+            <a href="#explanation" data-text="theorem">
+                Theorem
+            </a>
+
+            <a href="#interactive" data-text="interactiveNav">
+                Interactive
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <main id="top">
+
+        <section class="hero">
+
+            <h1 data-text="title">
+                Pythagorean Theorem
+            </h1>
+
+            <p data-text="subtitle">
+                Discover how the Pythagorean theorem works
+                through an interactive mathematical experience.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             EXPLANATION
+        ====================================== -->
+
+        <section class="explanation" id="explanation">
+
+            <h2 data-text="whatIs">
+                What is the Pythagorean Theorem?
+            </h2>
+
+            <p data-text="explanationText">
+                The Pythagorean theorem describes the relationship
+                between the three sides of a right-angled triangle.
+                The two shorter sides are called a and b, while
+                the longest side, opposite the right angle, is called c.
+            </p>
+
+            <div class="formula">
+
+                <span class="a">a²</span>
+                +
+                <span class="b">b²</span>
+                =
+                <span class="c">c²</span>
+
+            </div>
+
+            <p data-text="formulaExplanation">
+                This means that the square of side a plus the square
+                of side b is equal to the square of side c.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             INTERACTIVE SECTION
+        ====================================== -->
+
+        <section class="interactive" id="interactive">
+
+
+            <!-- CONTROLS -->
+
+            <div class="controls">
+
+                <h2 data-text="interactiveTitle">
+                    Try it yourself
+                </h2>
+
+                <p
+                    class="controls-description"
+                    data-text="interactiveDescription"
+                >
+                    Change the lengths of a and b.
+                    The triangle and calculation will update automatically.
+                </p>
+
+
+                <!-- SIDE A -->
+
+                <div class="input-group">
+
+                    <label data-text="sideALabel">
+                        Length of side a
+                    </label>
+
+                    <div class="input-wrapper input-a">
+
+                        <span>a =</span>
+
+                        <input
+                            id="inputA"
+                            type="number"
+                            min="1"
+                            max="20"
+                            step="0.1"
+                            value="3"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- SIDE B -->
+
+                <div class="input-group">
+
+                    <label data-text="sideBLabel">
+                        Length of side b
+                    </label>
+
+                    <div class="input-wrapper input-b">
+
+                        <span>b =</span>
+
+                        <input
+                            id="inputB"
+                            type="number"
+                            min="1"
+                            max="20"
+                            step="0.1"
+                            value="4"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATION -->
+
+                <div class="calculation">
+
+                    <h3 data-text="calculationTitle">
+                        Calculation
+                    </h3>
+
+                    <div
+                        class="calculation-line"
+                        id="calculationLine1"
+                    >
+                        a² + b² = c²
+                    </div>
+
+                    <div
+                        class="calculation-line"
+                        id="calculationLine2"
+                    >
+                        3² + 4² = c²
+                    </div>
+
+                    <div
+                        class="calculation-line"
+                        id="calculationLine3"
+                    >
+                        9 + 16 = 25
+                    </div>
+
+                    <div
+                        class="calculation-result"
+                        id="calculationResult"
+                    >
+                        c = 5
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="reset-button"
+                    id="resetButton"
+                    data-text="reset"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+
+            <!-- TRIANGLE -->
+
+            <div class="triangle-area">
+
+                <h2 data-text="triangleTitle">
+                    Your Triangle
+                </h2>
+
+                <div class="triangle-container">
+
+                    <svg
+                        class="triangle-svg"
+                        viewBox="0 0 500 360"
+                    >
+
+                        <!-- Triangle -->
+
+                        <polygon
+                            id="triangle"
+                            class="triangle"
+                            points="100,280 100,80 400,280"
+                        />
+
+
+                        <!-- Side A -->
+
+                        <line
+                            id="lineA"
+                            class="side-a"
+                            x1="100"
+                            y1="280"
+                            x2="100"
+                            y2="80"
+                        />
+
+
+                        <!-- Side B -->
+
+                        <line
+                            id="lineB"
+                            class="side-b"
+                            x1="100"
+                            y1="280"
+                            x2="400"
+                            y2="280"
+                        />
+
+
+                        <!-- Side C -->
+
+                        <line
+                            id="lineC"
+                            class="side-c"
+                            x1="100"
+                            y1="80"
+                            x2="400"
+                            y2="280"
+                        />
+
+
+                        <!-- Right angle -->
+
+                        <polyline
+                            id="rightAngle"
+                            class="right-angle"
+                            points="100,105 125,105 125,280"
+                        />
+
+
+                        <!-- Labels -->
+
+                        <text
+                            id="labelA"
+                            class="side-label label-a"
+                            x="75"
+                            y="185"
+                        >
+                            a = 3
+                        </text>
+
+                        <text
+                            id="labelB"
+                            class="side-label label-b"
+                            x="230"
+                            y="310"
+                        >
+                            b = 4
+                        </text>
+
+                        <text
+                            id="labelC"
+                            class="side-label label-c"
+                            x="270"
+                            y="155"
+                        >
+                            c = 5
+                        </text>
+
+                    </svg>
+
+                </div>
+
+                <p
+                    class="triangle-info"
+                    data-text="triangleInfo"
+                >
+                    The longest side c is the hypotenuse.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p data-text="footer">
+            Interactive Mathematics Project
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================
+         LANGUAGE SELECTOR
+    ========================================== -->
+
+    <div class="language-container">
+
+        <button
+            class="language-button"
+            id="languageButton"
+            aria-label="Select language"
+        >
+
+            <span id="currentFlag">
+                🇬🇧
+            </span>
+
+            <span>
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div
+            class="language-menu"
+            id="languageMenu"
+        >
+
+            <button
+                class="language-option"
+                data-language="en"
+            >
+
+                <span class="flag">
+                    🇬🇧
+                </span>
+
+                <span>
+                    English
+                </span>
+
+            </button>
+
+
+            <button
+                class="language-option"
+                data-language="de"
+            >
+
+                <span class="flag">
+                    🇩🇪
+                </span>
+
+                <span>
+                    Deutsch
+                </span>
+
+            </button>
+
+
+            <button
+                class="language-option"
+                data-language="es"
+            >
+
+                <span class="flag">
+                    🇪🇸
+                </span>
+
+                <span>
+                    Español
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* ========================================
+           TRANSLATIONS
+        ======================================== */
+
+        const translations = {
+
+            en: {
+
+                logo: "Pythagorean Theorem",
+
+                home: "Home",
+
+                theorem: "Theorem",
+
+                interactiveNav: "Interactive",
+
+                title: "Pythagorean Theorem",
+
+                subtitle:
+                    "Discover how the Pythagorean theorem works through an interactive mathematical experience.",
+
+                whatIs:
+                    "What is the Pythagorean Theorem?",
+
+                explanationText:
+                    "The Pythagorean theorem describes the relationship between the three sides of a right-angled triangle. The two shorter sides are called a and b, while the longest side, opposite the right angle, is called c.",
+
+                formulaExplanation:
+                    "This means that the square of side a plus the square of side b is equal to the square of side c.",
+
+                interactiveTitle:
+                    "Try it yourself",
+
+                interactiveDescription:
+                    "Change the lengths of a and b. The triangle and calculation will update automatically.",
+
+                sideALabel:
+                    "Length of side a",
+
+                sideBLabel:
+                    "Length of side b",
+
+                calculationTitle:
+                    "Calculation",
+
+                reset:
+                    "Reset",
+
+                triangleTitle:
+                    "Your Triangle",
+
+                triangleInfo:
+                    "The longest side c is the hypotenuse.",
+
+                footer:
+                    "Interactive Mathematics Project"
+
+            },
+
+
+            de: {
+
+                logo:
+                    "Satz des Pythagoras",
+
+                home:
+                    "Startseite",
+
+                theorem:
+                    "Satz",
+
+                interactiveNav:
+                    "Interaktiv",
+
+                title:
+                    "Satz des Pythagoras",
+
+                subtitle:
+                    "Entdecke, wie der Satz des Pythagoras funktioniert – mit einer interaktiven mathematischen Erfahrung.",
+
+                whatIs:
+                    "Was ist der Satz des Pythagoras?",
+
+                explanationText:
+                    "Der Satz des Pythagoras beschreibt den Zusammenhang zwischen den drei Seiten eines rechtwinkligen Dreiecks. Die beiden kürzeren Seiten heißen a und b, während die längste Seite gegenüber dem rechten Winkel c heißt.",
+
+                formulaExplanation:
+                    "Das bedeutet: Das Quadrat der Seite a plus das Quadrat der Seite b ist gleich dem Quadrat der Seite c.",
+
+                interactiveTitle:
+                    "Probiere es selbst",
+
+                interactiveDescription:
+                    "Verändere die Längen von a und b. Das Dreieck und die Berechnung werden automatisch angepasst.",
+
+                sideALabel:
+                    "Länge der Seite a",
+
+                sideBLabel:
+                    "Länge der Seite b",
+
+                calculationTitle:
+                    "Berechnung",
+
+                reset:
+                    "Zurücksetzen",
+
+                triangleTitle:
+                    "Dein Dreieck",
+
+                triangleInfo:
+                    "Die längste Seite c ist die Hypotenuse.",
+
+                footer:
+                    "Interaktives Mathematikprojekt"
+
+            },
+
+
+            es: {
+
+                logo:
+                    "Teorema de Pitágoras",
+
+                home:
+                    "Inicio",
+
+                theorem:
+                    "Teorema",
+
+                interactiveNav:
+                    "Interactivo",
+
+                title:
+                    "Teorema de Pitágoras",
+
+                subtitle:
+                    "Descubre cómo funciona el teorema de Pitágoras mediante una experiencia matemática interactiva.",
+
+                whatIs:
+                    "¿Qué es el teorema de Pitágoras?",
+
+                explanationText:
+                    "El teorema de Pitágoras describe la relación entre los tres lados de un triángulo rectángulo. Los dos lados más cortos se llaman a y b, mientras que el lado más largo, situado frente al ángulo recto, se llama c.",
+
+                formulaExplanation:
+                    "Esto significa que el cuadrado del lado a más el cuadrado del lado b es igual al cuadrado del lado c.",
+
+                interactiveTitle:
+                    "Pruébalo tú mismo",
+
+                interactiveDescription:
+                    "Cambia las longitudes de a y b. El triángulo y el cálculo se actualizarán automáticamente.",
+
+                sideALabel:
+                    "Longitud del lado a",
+
+                sideBLabel:
+                    "Longitud del lado b",
+
+                calculationTitle:
+                    "Cálculo",
+
+                reset:
+                    "Restablecer",
+
+                triangleTitle:
+                    "Tu triángulo",
+
+                triangleInfo:
+                    "El lado más largo c es la hipotenusa.",
+
+                footer:
+                    "Proyecto de Matemáticas Interactivo"
+
+            }
+
+        };
+
+
+        /* ========================================
+           FLAGS
+        ======================================== */
+
+        const flags = {
+
+            en: "🇬🇧",
+
+            de: "🇩🇪",
+
+            es: "🇪🇸"
+
+        };
+
+
+        /* ========================================
+           LANGUAGE ELEMENTS
+        ======================================== */
+
+        const languageButton =
+            document.getElementById("languageButton");
+
+        const languageMenu =
+            document.getElementById("languageMenu");
+
+        const currentFlag =
+            document.getElementById("currentFlag");
+
+
+        /* ========================================
+           LANGUAGE MENU
+        ======================================== */
+
+        languageButton.addEventListener(
+            "click",
+            function () {
+
+                languageMenu.classList.toggle("open");
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(".language-option")
+            .forEach(function (option) {
+
+                option.addEventListener(
+                    "click",
+                    function () {
+
+                        const language =
+                            option.dataset.language;
+
+                        changeLanguage(language);
+
+                        languageMenu.classList.remove("open");
+
+                    }
+                );
+
+            });
+
+
+        /* ========================================
+           CHANGE LANGUAGE
+        ======================================== */
+
+        function changeLanguage(language) {
+
+            const translation =
+                translations[language];
+
+            document
+                .querySelectorAll("[data-text]")
+                .forEach(function (element) {
+
+                    const key =
+                        element.dataset.text;
+
+                    if (translation[key]) {
+
+                        element.textContent =
+                            translation[key];
+
+                    }
+
+                });
+
+
+            currentFlag.textContent =
+                flags[language];
+
+            document.documentElement.lang =
+                language;
+
+
+            localStorage.setItem(
+                "selectedLanguage",
+                language
+            );
+
+
+            updateCalculation();
+
+        }
+
+
+        /* ========================================
+           CALCULATE PYTHAGOREAN THEOREM
+        ======================================== */
+
+        const inputA =
+            document.getElementById("inputA");
+
+        const inputB =
+            document.getElementById("inputB");
+
+        const calculationLine1 =
+            document.getElementById("calculationLine1");
+
+        const calculationLine2 =
+            document.getElementById("calculationLine2");
+
+        const calculationLine3 =
+            document.getElementById("calculationLine3");
+
+        const calculationResult =
+            document.getElementById("calculationResult");
+
+
+        function formatNumber(number) {
+
+            return Number.isInteger(number)
+                ? number
+                : number.toFixed(2);
+
+        }
+
+
+        function updateCalculation() {
+
+            let a =
+                parseFloat(inputA.value);
+
+            let b =
+                parseFloat(inputB.value);
+
+
+            if (
+                isNaN(a) ||
+                isNaN(b) ||
+                a <= 0 ||
+                b <= 0
+            ) {
+
+                return;
+
+            }
+
+
+            const c =
+                Math.sqrt(
+                    (a * a) +
+                    (b * b)
+                );
+
+
+            const aFormatted =
+                formatNumber(a);
+
+            const bFormatted =
+                formatNumber(b);
+
+            const cFormatted =
+                formatNumber(c);
+
+
+            calculationLine1.textContent =
+                "a² + b² = c²";
+
+            calculationLine2.textContent =
+                `${aFormatted}² + ${bFormatted}² = c²`;
+
+            calculationLine3.textContent =
+                `${formatNumber(a * a)} + ${formatNumber(b * b)} = ${formatNumber(c * c)}`;
+
+            calculationResult.textContent =
+                `c = ${cFormatted}`;
+
+
+            updateTriangle(
+                a,
+                b,
+                c
+            );
+
+        }
+
+
+        /* ========================================
+           UPDATE TRIANGLE
+        ======================================== */
+
+        const triangle =
+            document.getElementById("triangle");
+
+        const lineA =
+            document.getElementById("lineA");
+
+        const lineB =
+            document.getElementById("lineB");
+
+        const lineC =
+            document.getElementById("lineC");
+
+        const rightAngle =
+            document.getElementById("rightAngle");
+
+        const labelA =
+            document.getElementById("labelA");
+
+        const labelB =
+            document.getElementById("labelB");
+
+        const labelC =
+            document.getElementById("labelC");
+
+
+        function updateTriangle(
+            a,
+            b,
+            c
+        ) {
+
+            /*
+                Keep the triangle inside the SVG.
+
+                The scale is calculated so that
+                large values still fit nicely.
+            */
+
+            const maxSide =
+                Math.max(a, b);
+
+            const scale =
+                210 / maxSide;
+
+
+            const height =
+                a * scale;
+
+            const width =
+                b * scale;
+
+
+            const bottomX =
+                100 + width;
+
+            const topY =
+                280 - height;
+
+
+            /* Triangle */
+
+            triangle.setAttribute(
+                "points",
+                `100,280 100,${topY} ${bottomX},280`
+            );
+
+
+            /* Side A */
+
+            lineA.setAttribute(
+                "x1",
+                "100"
+            );
+
+            lineA.setAttribute(
+                "y1",
+                "280"
+            );
+
+            lineA.setAttribute(
+                "x2",
+                "100"
+            );
+
+            lineA.setAttribute(
+                "y2",
+                topY
+            );
+
+
+            /* Side B */
+
+            lineB.setAttribute(
+                "x1",
+                "100"
+            );
+
+            lineB.setAttribute(
+                "y1",
+                "280"
+            );
+
+            lineB.setAttribute(
+                "x2",
+                bottomX
+            );
+
+            lineB.setAttribute(
+                "y2",
+                "280"
+            );
+
+
+            /* Side C */
+
+            lineC.setAttribute(
+                "x1",
+                "100"
+            );
+
+            lineC.setAttribute(
+                "y1",
+                topY
+            );
+
+            lineC.setAttribute(
+                "x2",
+                bottomX
+            );
+
+            lineC.setAttribute(
+                "y2",
+                "280"
+            );
+
+
+            /* Right angle */
+
+            rightAngle.setAttribute(
+                "points",
+                `100,${topY + 25} 125,${topY + 25} 125,280`
+            );
+
+
+            /* Labels */
+
+            labelA.setAttribute(
+                "x",
+                "65"
+            );
+
+            labelA.setAttribute(
+                "y",
+                280 - (height / 2)
+            );
+
+
+            labelB.setAttribute(
+                "x",
+                100 + (width / 2) - 20
+            );
+
+            labelB.setAttribute(
+                "y",
+                "315"
+            );
+
+
+            labelC.setAttribute(
+                "x",
+                100 + (width * 0.55)
+            );
+
+            labelC.setAttribute(
+                "y",
+                280 - (height * 0.55)
+            );
+
+
+            labelA.textContent =
+                `a = ${formatNumber(a)}`;
+
+            labelB.textContent =
+                `b = ${formatNumber(b)}`;
+
+            labelC.textContent =
+                `c = ${formatNumber(c)}`;
+
+        }
+
+
+        /* ========================================
+           INPUT EVENTS
+        ======================================== */
+
+        inputA.addEventListener(
+            "input",
+            updateCalculation
+        );
+
+        inputB.addEventListener(
+            "input",
+            updateCalculation
+        );
+
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        document
+            .getElementById("resetButton")
+            .addEventListener(
+                "click",
+                function () {
+
+                    inputA.value = 3;
+
+                    inputB.value = 4;
+
+                    updateCalculation();
+
+                }
+            );
+
+
+        /* ========================================
+           LOAD SAVED LANGUAGE
+        ======================================== */
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selectedLanguage"
+            );
+
+
+        if (
+            savedLanguage &&
+            translations[savedLanguage]
+        ) {
+
+            changeLanguage(
+                savedLanguage
+            );
+
+        } else {
+
+            /*
+                English is the default.
+            */
+
+            changeLanguage("en");
+
+        }
+
+
+        /* ========================================
+           CLOSE LANGUAGE MENU OUTSIDE
+        ======================================== */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const clickedInside =
+                    languageButton.contains(
+                        event.target
+                    ) ||
+                    languageMenu.contains(
+                        event.target
+                    );
+
+
+                if (!clickedInside) {
+
+                    languageMenu.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+</body>
+</html>
