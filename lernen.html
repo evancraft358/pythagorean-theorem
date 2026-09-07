@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lernen – Satz des Pythagoras</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #0f172a;
+        color: #f8fafc;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* Background */
+    .background {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background:
+            radial-gradient(circle at 15% 20%, rgba(59,130,246,0.18), transparent 35%),
+            radial-gradient(circle at 85% 80%, rgba(168,85,247,0.18), transparent 35%),
+            #0f172a;
+    }
+
+    .background::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.4;
+    }
+
+    /* Navigation */
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        background: rgba(15,23,42,0.82);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #cbd5e1;
+        padding: 9px 14px;
+        border-radius: 9px;
+        transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+        color: white;
+        background: rgba(255,255,255,0.08);
+    }
+
+    .nav-links a.active {
+        color: white;
+        background: rgba(59,130,246,0.18);
+    }
+
+    #languageSelect {
+        margin-left: 8px;
+        background: #1e293b;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        padding: 8px 10px;
+        cursor: pointer;
+    }
+
+    /* Main */
+    main {
+        width: min(1000px, 92%);
+        margin: auto;
+        padding: 70px 0 120px;
+    }
+
+    .hero {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: clamp(34px, 5vw, 58px);
+        margin-bottom: 15px;
+        background: linear-gradient(90deg, #60a5fa, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+        color: #94a3b8;
+        font-size: 18px;
+    }
+
+    /* Cards */
+    .card {
+        background: rgba(15,23,42,0.70);
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.22);
+        backdrop-filter: blur(10px);
+    }
+
+    .card h2 {
+        margin-bottom: 18px;
+        font-size: 25px;
+    }
+
+    .card p {
+        color: #cbd5e1;
+        line-height: 1.7;
+    }
+
+    /* Rules */
+    .rules {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .rule {
+        padding: 18px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .rule strong {
+        display: block;
+        margin-bottom: 7px;
+        color: white;
+    }
+
+    .rule span {
+        color: #94a3b8;
+        line-height: 1.5;
+    }
+
+    /* Task */
+    .task-card {
+        text-align: center;
+    }
+
+    .task-number {
+        color: #94a3b8;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .task-title {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .task-description {
+        color: #94a3b8;
+        margin-bottom: 25px;
+    }
+
+    /* Triangle */
+    .triangle-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 25px 0 35px;
+        min-height: 330px;
+    }
+
+    .triangle {
+        position: relative;
+        width: 400px;
+        height: 280px;
+        max-width: 90vw;
+    }
+
+    .triangle svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+
+    .side-label {
+        font-size: 18px;
+        font-weight: bold;
+        fill: white;
+    }
+
+    .side-value {
+        font-size: 16px;
+        font-weight: normal;
+        fill: #cbd5e1;
+    }
+
+    .c-label {
+        font-size: 18px;
+        font-weight: bold;
+        fill: #fb923c;
+    }
+
+    /* Answer */
+    .answer-area {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .answer-label {
+        display: block;
+        text-align: left;
+        margin-bottom: 8px;
+        color: #cbd5e1;
+    }
+
+    .input-row {
+        display: flex;
+        gap: 10px;
+    }
+
+    #answerInput {
+        flex: 1;
+        padding: 14px 16px;
+        border-radius: 10px;
+        border: 2px solid rgba(255,255,255,0.12);
+        background: #111827;
+        color: white;
+        font-size: 18px;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    #answerInput:focus {
+        border-color: #60a5fa;
+    }
+
+    #answerInput.correct {
+        border-color: #22c55e;
+        background: rgba(34,197,94,0.10);
+    }
+
+    #answerInput.wrong {
+        border-color: #ef4444;
+        background: rgba(239,68,68,0.10);
+    }
+
+    .unit {
+        display: flex;
+        align-items: center;
+        color: #cbd5e1;
+        font-size: 18px;
+    }
+
+    button {
+        border: none;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        transition: 0.2s;
+    }
+
+    #finishButton {
+        margin-top: 15px;
+        width: 100%;
+        padding: 14px;
+        font-size: 17px;
+        background: linear-gradient(90deg, #2563eb, #7c3aed);
+    }
+
+    #finishButton:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.1);
+    }
+
+    #newTaskButton {
+        margin-top: 15px;
+        padding: 12px 20px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    #newTaskButton:hover {
+        background: rgba(255,255,255,0.13);
+    }
+
+    /* Result */
+    #result {
+        margin-top: 25px;
+        display: none;
+        padding: 22px;
+        border-radius: 15px;
+        text-align: left;
+    }
+
+    #result.correct-result {
+        display: block;
+        background: rgba(34,197,94,0.10);
+        border: 1px solid rgba(34,197,94,0.35);
+    }
+
+    #result.wrong-result {
+        display: block;
+        background: rgba(239,68,68,0.10);
+        border: 1px solid rgba(239,68,68,0.35);
+    }
+
+    .result-title {
+        font-size: 21px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .correct-result .result-title {
+        color: #4ade80;
+    }
+
+    .wrong-result .result-title {
+        color: #f87171;
+    }
+
+    .solution {
+        color: #cbd5e1;
+        line-height: 1.8;
+        font-family: "Courier New", monospace;
+        background: rgba(0,0,0,0.18);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 12px;
+        overflow-x: auto;
+    }
+
+    /* Bottom tools */
+    .tools {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 30px;
+    }
+
+    .tool-button {
+        padding: 18px;
+        font-size: 17px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .tool-button:hover {
+        background: rgba(255,255,255,0.11);
+        transform: translateY(-2px);
+    }
+
+    /* Modal */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(0,0,0,0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        backdrop-filter: blur(8px);
+    }
+
+    .modal {
+        width: min(500px, 100%);
+        background: #111827;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 18px;
+        padding: 25px;
+        box-shadow: 0 20px 70px rgba(0,0,0,0.45);
+    }
+
+    .modal h2 {
+        margin-bottom: 15px;
+    }
+
+    .modal textarea {
+        width: 100%;
+        min-height: 220px;
+        resize: vertical;
+        padding: 14px;
+        background: #0f172a;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 10px;
+        outline: none;
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .modal-buttons button {
+        padding: 11px 18px;
+    }
+
+    .save-button {
+        background: #2563eb;
+    }
+
+    .close-button {
+        background: rgba(255,255,255,0.08);
+    }
+
+    /* Calculator */
+    .calculator {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .calc-display {
+        grid-column: 1 / -1;
+        height: 55px;
+        background: #0b1120;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 9px;
+        padding: 12px;
+        font-size: 22px;
+        color: white;
+        text-align: right;
+        overflow: hidden;
+    }
+
+    .calc-button {
+        padding: 15px 5px;
+        background: #1e293b;
+        border: 1px solid rgba(255,255,255,0.06);
+        font-size: 16px;
+    }
+
+    .calc-button:hover {
+        background: #334155;
+    }
+
+    .calc-equals {
+        background: #2563eb;
+    }
+
+    .calc-clear {
+        background: #7c2d12;
+    }
+
+    /* Navigation bottom */
+    .back-home {
+        display: inline-block;
+        margin-top: 35px;
+        color: #93c5fd;
+        text-decoration: none;
+    }
+
+    .back-home:hover {
+        text-decoration: underline;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+        nav {
+            padding: 0 4%;
+        }
+
+        .logo {
+            font-size: 16px;
+        }
+
+        .nav-links a {
+            padding: 7px 8px;
+            font-size: 14px;
+        }
+
+        #languageSelect {
+            padding: 7px 5px;
+            font-size: 12px;
+        }
+
+        main {
+            padding-top: 45px;
+        }
+
+        .card {
+            padding: 20px;
+        }
+
+        .input-row {
+            flex-direction: column;
+        }
+
+        .unit {
+            justify-content: center;
+        }
+
+        .tools {
+            grid-template-columns: 1fr;
+        }
+
+        .triangle-wrapper {
+            min-height: 250px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav>
+    <a href="index.html" class="logo">Pythagorean Theorem</a>
+
+    <div class="nav-links">
+        <a href="index.html" data-text="home">Home</a>
+        <a href="beweis.html" data-text="proof">Proof</a>
+        <a href="lernen.html" class="active" data-text="learn">Learn</a>
+
+        <select id="languageSelect">
+            <option value="de">🇩🇪 DE</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="es">🇪🇸 ES</option>
+        </select>
+    </div>
+</nav>
+
+<main>
+
+    <section class="hero">
+        <h1 data-text="title">Lernen</h1>
+        <p data-text="subtitle">
+            Löse die Aufgaben selbst und teste dein Wissen.
+        </p>
+    </section>
+
+    <!-- RULES -->
+    <section class="card">
+        <h2 data-text="rulesTitle">📖 Regeln</h2>
+
+        <div class="rules">
+
+            <div class="rule">
+                <strong data-text="rule1Title">1. Runde richtig</strong>
+                <span data-text="rule1Text">
+                    Ergebnisse werden auf zwei Nachkommastellen gerundet.
+                </span>
+            </div>
+
+            <div class="rule">
+                <strong data-text="rule2Title">2. Beispiel</strong>
+                <span data-text="rule2Text">
+                    1,3253001 wird zu 1,33.
+                </span>
+            </div>
+
+            <div class="rule">
+                <strong data-text="rule3Title">3. Formel</strong>
+                <span data-text="rule3Text">
+                    Für c gilt: c = √(a² + b²).
+                </span>
+            </div>
+
+            <div class="rule">
+                <strong data-text="rule4Title">4. Aufgabe</strong>
+                <span data-text="rule4Text">
+                    Trage deine Lösung ein und drücke Fertig.
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TASK -->
+    <section class="card task-card">
+
+        <div class="task-number">
+            <span data-text="taskLabel">Aufgabe</span>
+            <span id="taskNumber">1</span>
+        </div>
+
+        <h2 class="task-title" data-text="taskTitle">
+            Berechne die Hypotenuse c
+        </h2>
+
+        <p class="task-description" data-text="taskDescription">
+            Berechne die Länge der Seite c und trage dein Ergebnis ein.
+        </p>
+
+        <!-- TRIANGLE -->
+        <div class="triangle-wrapper">
+
+            <div class="triangle">
+
+                <svg viewBox="0 0 400 280">
+
+                    <!-- Triangle -->
+                    <polygon
+                        points="55,235 55,45 350,235"
+                        fill="rgba(59,130,246,0.08)"
+                        stroke="#60a5fa"
+                        stroke-width="4"
+                    />
+
+                    <!-- Right angle -->
+                    <polyline
+                        points="55,215 75,215 75,235"
+                        fill="none"
+                        stroke="#94a3b8"
+                        stroke-width="3"
+                    />
+
+                    <!-- a -->
+                    <text x="42" y="145" class="side-label">a</text>
+                    <text x="18" y="168" class="side-value" id="sideA">5 cm</text>
+
+                    <!-- b -->
+                    <text x="190" y="260" class="side-label">b</text>
+                    <text x="210" y="260" class="side-value" id="sideB">12 cm</text>
+
+                    <!-- c -->
+                    <text x="210" y="125" class="c-label">c = ?</text>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+        <!-- ANSWER -->
+        <div class="answer-area">
+
+            <label class="answer-label" for="answerInput" data-text="answerLabel">
+                Deine Antwort:
+            </label>
+
+            <div class="input-row">
+
+                <input
+                    id="answerInput"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    placeholder="z. B. 13,00"
+                >
+
+                <span class="unit">cm</span>
+
+            </div>
+
+            <button id="finishButton" data-text="finish">
+                Fertig
+            </button>
+
+            <button id="newTaskButton" data-text="newTask">
+                Neue Aufgabe
+            </button>
+
+        </div>
+
+        <!-- RESULT -->
+        <div id="result">
+
+            <div class="result-title" id="resultTitle"></div>
+
+            <div id="resultMessage"></div>
+
+            <div class="solution" id="solution"></div>
+
+        </div>
+
+    </section>
+
+    <!-- TOOLS -->
+    <section class="tools">
+
+        <button class="tool-button" id="notesButton">
+            📝 <span data-text="notes">Notiz</span>
+        </button>
+
+        <button class="tool-button" id="calculatorButton">
+            🧮 <span data-text="calculator">Rechner</span>
+        </button>
+
+    </section>
+
+    <a href="index.html" class="back-home" data-text="backHome">
+        ← Zurück zur Startseite
+    </a>
+
+</main>
+
+
+<!-- NOTES MODAL -->
+<div class="modal-overlay" id="notesModal">
+
+    <div class="modal">
+
+        <h2 data-text="notesTitle">📝 Meine Notizen</h2>
+
+        <textarea
+            id="notesArea"
+            placeholder="Schreibe hier deine Notizen..."
+        ></textarea>
+
+        <div class="modal-buttons">
+
+            <button class="close-button" id="closeNotes" data-text="close">
+                Schließen
+            </button>
+
+            <button class="save-button" id="saveNotes" data-text="save">
+                Speichern
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CALCULATOR MODAL -->
+<div class="modal-overlay" id="calculatorModal">
+
+    <div class="modal">
+
+        <h2 data-text="calculatorTitle">🧮 Taschenrechner</h2>
+
+        <div class="calculator">
+
+            <div class="calc-display" id="calcDisplay">0</div>
+
+            <button class="calc-button calc-clear" onclick="clearCalculator()">C</button>
+            <button class="calc-button" onclick="deleteCalculator()">⌫</button>
+            <button class="calc-button" onclick="addCalculator('(')">(</button>
+            <button class="calc-button" onclick="addCalculator(')')">)</button>
+
+            <button class="calc-button" onclick="addCalculator('7')">7</button>
+            <button class="calc-button" onclick="addCalculator('8')">8</button>
+            <button class="calc-button" onclick="addCalculator('9')">9</button>
+            <button class="calc-button" onclick="addCalculator('/')">÷</button>
+
+            <button class="calc-button" onclick="addCalculator('4')">4</button>
+            <button class="calc-button" onclick="addCalculator('5')">5</button>
+            <button class="calc-button" onclick="addCalculator('6')">6</button>
+            <button class="calc-button" onclick="addCalculator('*')">×</button>
+
+            <button class="calc-button" onclick="addCalculator('1')">1</button>
+            <button class="calc-button" onclick="addCalculator('2')">2</button>
+            <button class="calc-button" onclick="addCalculator('3')">3</button>
+            <button class="calc-button" onclick="addCalculator('-')">−</button>
+
+            <button class="calc-button" onclick="addCalculator('0')">0</button>
+            <button class="calc-button" onclick="addCalculator('.')">.</button>
+            <button class="calc-button calc-equals" onclick="calculateResult()">=</button>
+            <button class="calc-button" onclick="addCalculator('+')">+</button>
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button class="close-button" id="closeCalculator" data-text="close">
+                Schließen
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   TRANSLATIONS
+========================================================= */
+
+const translations = {
+
+    de: {
+        home: "Startseite",
+        proof: "Beweis",
+        learn: "Lernen",
+
+        title: "Lernen",
+        subtitle: "Löse die Aufgaben selbst und teste dein Wissen.",
+
+        rulesTitle: "📖 Regeln",
+
+        rule1Title: "1. Runde richtig",
+        rule1Text: "Ergebnisse werden auf zwei Nachkommastellen gerundet.",
+
+        rule2Title: "2. Beispiel",
+        rule2Text: "1,3253001 wird zu 1,33.",
+
+        rule3Title: "3. Formel",
+        rule3Text: "Für c gilt: c = √(a² + b²).",
+
+        rule4Title: "4. Aufgabe",
+        rule4Text: "Trage deine Lösung ein und drücke Fertig.",
+
+        taskLabel: "Aufgabe",
+        taskTitle: "Berechne die Hypotenuse c",
+        taskDescription: "Berechne die Länge der Seite c und trage dein Ergebnis ein.",
+
+        answerLabel: "Deine Antwort:",
+        finish: "Fertig",
+        newTask: "Neue Aufgabe",
+
+        notes: "Notiz",
+        calculator: "Rechner",
+
+        backHome: "← Zurück zur Startseite",
+
+        notesTitle: "📝 Meine Notizen",
+        notesPlaceholder: "Schreibe hier deine Notizen...",
+        close: "Schließen",
+        save: "Speichern",
+
+        calculatorTitle: "🧮 Taschenrechner",
+
+        correctTitle: "✅ Richtig!",
+        correctMessage: "Sehr gut! Deine Antwort ist korrekt.",
+
+        wrongTitle: "❌ Leider falsch!",
+        wrongMessage: "Deine Antwort stimmt nicht. Hier ist der richtige Rechenweg:",
+
+        solution: "Rechenweg:"
+    },
+
+    en: {
+        home: "Home",
+        proof: "Proof",
+        learn: "Learn",
+
+        title: "Learn",
+        subtitle: "Solve the exercises yourself and test your knowledge.",
+
+        rulesTitle: "📖 Rules",
+
+        rule1Title: "1. Round correctly",
+        rule1Text: "Results are rounded to two decimal places.",
+
+        rule2Title: "2. Example",
+        rule2Text: "1.3253001 becomes 1.33.",
+
+        rule3Title: "3. Formula",
+        rule3Text: "For c: c = √(a² + b²).",
+
+        rule4Title: "4. Exercise",
+        rule4Text: "Enter your answer and press Finish.",
+
+        taskLabel: "Exercise",
+        taskTitle: "Calculate the hypotenuse c",
+        taskDescription: "Calculate the length of side c and enter your answer.",
+
+        answerLabel: "Your answer:",
+        finish: "Finish",
+        newTask: "New exercise",
+
+        notes: "Notes",
+        calculator: "Calculator",
+
+        backHome: "← Back to home",
+
+        notesTitle: "📝 My Notes",
+        notesPlaceholder: "Write your notes here...",
+        close: "Close",
+        save: "Save",
+
+        calculatorTitle: "🧮 Calculator",
+
+        correctTitle: "✅ Correct!",
+        correctMessage: "Very good! Your answer is correct.",
+
+        wrongTitle: "❌ Incorrect!",
+        wrongMessage: "Your answer is incorrect. Here is the correct solution:",
+
+        solution: "Solution:"
+    },
+
+    es: {
+        home: "Inicio",
+        proof: "Demostración",
+        learn: "Aprender",
+
+        title: "Aprender",
+        subtitle: "Resuelve los ejercicios y pon a prueba tus conocimientos.",
+
+        rulesTitle: "📖 Reglas",
+
+        rule1Title: "1. Redondea correctamente",
+        rule1Text: "Los resultados se redondean a dos decimales.",
+
+        rule2Title: "2. Ejemplo",
+        rule2Text: "1,3253001 se convierte en 1,33.",
+
+        rule3Title: "3. Fórmula",
+        rule3Text: "Para c: c = √(a² + b²).",
+
+        rule4Title: "4. Ejercicio",
+        rule4Text: "Introduce tu respuesta y pulsa Terminar.",
+
+        taskLabel: "Ejercicio",
+        taskTitle: "Calcula la hipotenusa c",
+        taskDescription: "Calcula la longitud del lado c e introduce tu respuesta.",
+
+        answerLabel: "Tu respuesta:",
+        finish: "Terminar",
+        newTask: "Nuevo ejercicio",
+
+        notes: "Nota",
+        calculator: "Calculadora",
+
+        backHome: "← Volver al inicio",
+
+        notesTitle: "📝 Mis notas",
+        notesPlaceholder: "Escribe tus notas aquí...",
+        close: "Cerrar",
+        save: "Guardar",
+
+        calculatorTitle: "🧮 Calculadora",
+
+        correctTitle: "✅ ¡Correcto!",
+        correctMessage: "¡Muy bien! Tu respuesta es correcta.",
+
+        wrongTitle: "❌ ¡Incorrecto!",
+        wrongMessage: "Tu respuesta es incorrecta. Aquí está la solución correcta:",
+
+        solution: "Solución:"
+    }
+
+};
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+let currentLanguage = localStorage.getItem("preferredLanguage") || "de";
+
+const languageSelect = document.getElementById("languageSelect");
+
+languageSelect.value = currentLanguage;
+
+function updateLanguage() {
+
+    const t = translations[currentLanguage];
+
+    document.querySelectorAll("[data-text]").forEach(element => {
+
+        const key = element.getAttribute("data-text");
+
+        if (t[key]) {
+            element.textContent = t[key];
+        }
+
+    });
+
+    document.getElementById("notesArea").placeholder = t.notesPlaceholder;
+
+    document.documentElement.lang = currentLanguage;
+
+}
+
+languageSelect.addEventListener("change", () => {
+
+    currentLanguage = languageSelect.value;
+
+    localStorage.setItem("preferredLanguage", currentLanguage);
+
+    updateLanguage();
+
+});
+
+updateLanguage();
+
+
+/* =========================================================
+   RANDOM TASK
+========================================================= */
+
+let a;
+let b;
+let correctC;
+let taskCount = 1;
+
+function randomNumber(min, max) {
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+}
+
+function roundTwo(number) {
+
+    return Math.round((number + Number.EPSILON) * 100) / 100;
+
+}
+
+function createTask() {
+
+    a = randomNumber(1, 20);
+    b = randomNumber(1, 20);
+
+    correctC = roundTwo(Math.sqrt(a * a + b * b));
+
+    document.getElementById("sideA").textContent = a + " cm";
+    document.getElementById("sideB").textContent = b + " cm";
+
+    document.getElementById("taskNumber").textContent = taskCount;
+
+    const input = document.getElementById("answerInput");
+
+    input.value = "";
+    input.classList.remove("correct", "wrong");
+
+    document.getElementById("result").style.display = "none";
+    document.getElementById("result").className = "";
+
+}
+
+
+/* =========================================================
+   CHECK ANSWER
+========================================================= */
+
+document.getElementById("finishButton").addEventListener("click", checkAnswer);
+
+function checkAnswer() {
+
+    const input = document.getElementById("answerInput");
+
+    let userValue = input.value.trim();
+
+    /*
+       Accept both:
+       12,34
+       12.34
+    */
+
+    userValue = userValue.replace(",", ".");
+
+    const userNumber = Number(userValue);
+
+    const result = document.getElementById("result");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultMessage = document.getElementById("resultMessage");
+    const solution = document.getElementById("solution");
+
+    const t = translations[currentLanguage];
+
+    if (!userValue || Number.isNaN(userNumber)) {
+
+        input.classList.remove("correct");
+        input.classList.add("wrong");
+
+        result.className = "wrong-result";
+        result.style.display = "block";
+
+        resultTitle.textContent = t.wrongTitle;
+        resultMessage.textContent = t.wrongMessage;
+
+        solution.innerHTML =
+            `${t.solution}<br><br>
+            c = √(a² + b²)<br>
+            c = √(${a}² + ${b}²)<br>
+            c = √(${a * a} + ${b * b})<br>
+            c = √${a * a + b * b}<br>
+            c = ${correctC.toFixed(2)} cm`;
+
+        return;
+
+    }
+
+    /*
+       Compare rounded values.
+       This means:
+       13
+       13.0
+       13,00
+
+       are all accepted as 13.00.
+    */
+
+    const roundedUser = roundTwo(userNumber);
+
+    const isCorrect = roundedUser === correctC;
+
+    if (isCorrect) {
+
+        input.classList.remove("wrong");
+        input.classList.add("correct");
+
+        result.className = "correct-result";
+        result.style.display = "block";
+
+        resultTitle.textContent = t.correctTitle;
+        resultMessage.textContent = t.correctMessage;
+
+        solution.innerHTML =
+            `${t.solution}<br><br>
+            c = √(a² + b²)<br>
+            c = √(${a}² + ${b}²)<br>
+            c = √(${a * a} + ${b * b})<br>
+            c = √${a * a + b * b}<br>
+            c = ${correctC.toFixed(2)} cm`;
+
+    } else {
+
+        input.classList.remove("correct");
+        input.classList.add("wrong");
+
+        result.className = "wrong-result";
+        result.style.display = "block";
+
+        resultTitle.textContent = t.wrongTitle;
+        resultMessage.textContent = t.wrongMessage;
+
+        solution.innerHTML =
+            `${t.solution}<br><br>
+            c = √(a² + b²)<br>
+            c = √(${a}² + ${b}²)<br>
+            c = √(${a * a} + ${b * b})<br>
+            c = √${a * a + b * b}<br>
+            c = ${correctC.toFixed(2)} cm`;
+
+    }
+
+}
+
+
+/* =========================================================
+   NEW TASK
+========================================================= */
+
+document.getElementById("newTaskButton").addEventListener("click", () => {
+
+    taskCount++;
+
+    createTask();
+
+});
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+const notesModal = document.getElementById("notesModal");
+const notesArea = document.getElementById("notesArea");
+
+notesArea.value = localStorage.getItem("pythagoreanNotes") || "";
+
+document.getElementById("notesButton").addEventListener("click", () => {
+
+    notesModal.style.display = "flex";
+
+});
+
+document.getElementById("closeNotes").addEventListener("click", () => {
+
+    notesModal.style.display = "none";
+
+});
+
+document.getElementById("saveNotes").addEventListener("click", () => {
+
+    localStorage.setItem("pythagoreanNotes", notesArea.value);
+
+    notesModal.style.display = "none";
+
+});
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+const calculatorModal = document.getElementById("calculatorModal");
+const calcDisplay = document.getElementById("calcDisplay");
+
+let calculatorValue = "";
+
+function addCalculator(value) {
+
+    calculatorValue += value;
+
+    calcDisplay.textContent = calculatorValue || "0";
+
+}
+
+function clearCalculator() {
+
+    calculatorValue = "";
+
+    calcDisplay.textContent = "0";
+
+}
+
+function deleteCalculator() {
+
+    calculatorValue = calculatorValue.slice(0, -1);
+
+    calcDisplay.textContent = calculatorValue || "0";
+
+}
+
+function calculateResult() {
+
+    if (!calculatorValue) return;
+
+    try {
+
+        /*
+           Only basic mathematical characters are accepted.
+           This prevents arbitrary code from being entered.
+        */
+
+        if (!/^[0-9+\-*/().\s]+$/.test(calculatorValue)) {
+
+            throw new Error();
+
+        }
+
+        const result = Function(
+            `"use strict"; return (${calculatorValue})`
+        )();
+
+        if (!Number.isFinite(result)) {
+
+            throw new Error();
+
+        }
+
+        calculatorValue = String(roundTwo(result));
+
+        calcDisplay.textContent = calculatorValue;
+
+    } catch {
+
+        calcDisplay.textContent = "Error";
+
+        calculatorValue = "";
+
+    }
+
+}
+
+document.getElementById("calculatorButton").addEventListener("click", () => {
+
+    calculatorModal.style.display = "flex";
+
+});
+
+document.getElementById("closeCalculator").addEventListener("click", () => {
+
+    calculatorModal.style.display = "none";
+
+});
+
+
+/* =========================================================
+   CLOSE MODALS WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.querySelectorAll(".modal-overlay").forEach(modal => {
+
+    modal.addEventListener("click", event => {
+
+        if (event.target === modal) {
+
+            modal.style.display = "none";
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+document.getElementById("answerInput").addEventListener("keydown", event => {
+
+    if (event.key === "Enter") {
+
+        checkAnswer();
+
+    }
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
+
+createTask();
+
+</script>
+
+</body>
+</html>
