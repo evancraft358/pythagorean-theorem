@@ -20,7 +20,10 @@
         overflow-x: hidden;
     }
 
-    /* Background */
+    /* =========================
+       BACKGROUND
+    ========================= */
+
     .background {
         position: fixed;
         inset: 0;
@@ -42,7 +45,10 @@
         opacity: 0.4;
     }
 
-    /* Navigation */
+    /* =========================
+       NAVIGATION
+    ========================= */
+
     nav {
         position: sticky;
         top: 0;
@@ -98,7 +104,10 @@
         cursor: pointer;
     }
 
-    /* Main */
+    /* =========================
+       MAIN
+    ========================= */
+
     main {
         width: min(1000px, 92%);
         margin: auto;
@@ -123,7 +132,10 @@
         font-size: 18px;
     }
 
-    /* Cards */
+    /* =========================
+       CARDS
+    ========================= */
+
     .card {
         background: rgba(15,23,42,0.70);
         border: 1px solid rgba(255,255,255,0.09);
@@ -144,7 +156,10 @@
         line-height: 1.7;
     }
 
-    /* Rules */
+    /* =========================
+       RULES
+    ========================= */
+
     .rules {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -170,7 +185,10 @@
         line-height: 1.5;
     }
 
-    /* Task */
+    /* =========================
+       TASK
+    ========================= */
+
     .task-card {
         text-align: center;
     }
@@ -191,7 +209,10 @@
         margin-bottom: 25px;
     }
 
-    /* Triangle */
+    /* =========================
+       TRIANGLE
+    ========================= */
+
     .triangle-wrapper {
         display: flex;
         justify-content: center;
@@ -231,7 +252,10 @@
         fill: #fb923c;
     }
 
-    /* Answer */
+    /* =========================
+       ANSWER
+    ========================= */
+
     .answer-area {
         max-width: 500px;
         margin: auto;
@@ -315,7 +339,10 @@
         background: rgba(255,255,255,0.13);
     }
 
-    /* Result */
+    /* =========================
+       RESULT
+    ========================= */
+
     #result {
         margin-top: 25px;
         display: none;
@@ -361,7 +388,10 @@
         overflow-x: auto;
     }
 
-    /* Bottom tools */
+    /* =========================
+       TOOLS
+    ========================= */
+
     .tools {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -381,7 +411,10 @@
         transform: translateY(-2px);
     }
 
-    /* Modal */
+    /* =========================
+       MODALS
+    ========================= */
+
     .modal-overlay {
         position: fixed;
         inset: 0;
@@ -406,6 +439,10 @@
     .modal h2 {
         margin-bottom: 15px;
     }
+
+    /* =========================
+       NOTES
+    ========================= */
 
     .modal textarea {
         width: 100%;
@@ -440,7 +477,10 @@
         background: rgba(255,255,255,0.08);
     }
 
-    /* Calculator */
+    /* =========================
+       CALCULATOR
+    ========================= */
+
     .calculator {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -480,7 +520,10 @@
         background: #7c2d12;
     }
 
-    /* Navigation bottom */
+    /* =========================
+       BACK HOME
+    ========================= */
+
     .back-home {
         display: inline-block;
         margin-top: 35px;
@@ -492,8 +535,12 @@
         text-decoration: underline;
     }
 
-    /* Mobile */
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 600px) {
+
         nav {
             padding: 0 4%;
         }
@@ -543,85 +590,163 @@
 
 <div class="background"></div>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
-    <a href="index.html" class="logo">Pythagorean Theorem</a>
+
+    <a href="index.html" class="logo">
+        Pythagorean Theorem
+    </a>
 
     <div class="nav-links">
-        <a href="index.html" data-text="home">Home</a>
-        <a href="beweis.html" data-text="proof">Proof</a>
-        <a href="lernen.html" class="active" data-text="learn">Learn</a>
+
+        <a href="index.html" data-text="home">
+            Home
+        </a>
+
+        <a href="beweis.html" data-text="proof">
+            Proof
+        </a>
+
+        <a href="lernen.html" class="active" data-text="learn">
+            Learn
+        </a>
 
         <select id="languageSelect">
+
             <option value="de">🇩🇪 DE</option>
             <option value="en">🇬🇧 EN</option>
             <option value="es">🇪🇸 ES</option>
+
         </select>
+
     </div>
+
 </nav>
+
 
 <main>
 
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
-        <h1 data-text="title">Lernen</h1>
+
+        <h1 data-text="title">
+            Lernen
+        </h1>
+
         <p data-text="subtitle">
             Löse die Aufgaben selbst und teste dein Wissen.
         </p>
+
     </section>
 
-    <!-- RULES -->
+
+    <!-- =========================
+         RULES
+    ========================= -->
+
     <section class="card">
-        <h2 data-text="rulesTitle">📖 Regeln</h2>
+
+        <h2 data-text="rulesTitle">
+            📖 Regeln
+        </h2>
 
         <div class="rules">
 
             <div class="rule">
-                <strong data-text="rule1Title">1. Runde richtig</strong>
+
+                <strong data-text="rule1Title">
+                    1. Runde richtig
+                </strong>
+
                 <span data-text="rule1Text">
                     Ergebnisse werden auf zwei Nachkommastellen gerundet.
                 </span>
+
             </div>
 
+
             <div class="rule">
-                <strong data-text="rule2Title">2. Beispiel</strong>
+
+                <strong data-text="rule2Title">
+                    2. Beispiel
+                </strong>
+
                 <span data-text="rule2Text">
                     1,3253001 wird zu 1,33.
                 </span>
+
             </div>
 
+
             <div class="rule">
-                <strong data-text="rule3Title">3. Formel</strong>
+
+                <strong data-text="rule3Title">
+                    3. Formel
+                </strong>
+
                 <span data-text="rule3Text">
                     Für c gilt: c = √(a² + b²).
                 </span>
+
             </div>
 
+
             <div class="rule">
-                <strong data-text="rule4Title">4. Aufgabe</strong>
+
+                <strong data-text="rule4Title">
+                    4. Aufgabe
+                </strong>
+
                 <span data-text="rule4Text">
                     Trage deine Lösung ein und drücke Fertig.
                 </span>
+
             </div>
 
         </div>
+
     </section>
 
-    <!-- TASK -->
+
+    <!-- =========================
+         TASK
+    ========================= -->
+
     <section class="card task-card">
 
         <div class="task-number">
-            <span data-text="taskLabel">Aufgabe</span>
-            <span id="taskNumber">1</span>
+
+            <span data-text="taskLabel">
+                Aufgabe
+            </span>
+
+            <span id="taskNumber">
+                1
+            </span>
+
         </div>
+
 
         <h2 class="task-title" data-text="taskTitle">
             Berechne die Hypotenuse c
         </h2>
 
+
         <p class="task-description" data-text="taskDescription">
             Berechne die Länge der Seite c und trage dein Ergebnis ein.
         </p>
 
-        <!-- TRIANGLE -->
+
+        <!-- =========================
+             TRIANGLE
+        ========================= -->
+
         <div class="triangle-wrapper">
 
             <div class="triangle">
@@ -629,6 +754,7 @@
                 <svg viewBox="0 0 400 280">
 
                     <!-- Triangle -->
+
                     <polygon
                         points="55,235 55,45 350,235"
                         fill="rgba(59,130,246,0.08)"
@@ -636,7 +762,9 @@
                         stroke-width="4"
                     />
 
+
                     <!-- Right angle -->
+
                     <polyline
                         points="55,215 75,215 75,235"
                         fill="none"
@@ -644,16 +772,56 @@
                         stroke-width="3"
                     />
 
+
                     <!-- a -->
-                    <text x="42" y="145" class="side-label">a</text>
-                    <text x="18" y="168" class="side-value" id="sideA">5 cm</text>
+
+                    <text
+                        x="42"
+                        y="145"
+                        class="side-label"
+                    >
+                        a
+                    </text>
+
+                    <text
+                        x="18"
+                        y="168"
+                        class="side-value"
+                        id="sideA"
+                    >
+                        5 cm
+                    </text>
+
 
                     <!-- b -->
-                    <text x="190" y="260" class="side-label">b</text>
-                    <text x="210" y="260" class="side-value" id="sideB">12 cm</text>
+
+                    <text
+                        x="190"
+                        y="260"
+                        class="side-label"
+                    >
+                        b
+                    </text>
+
+                    <text
+                        x="210"
+                        y="260"
+                        class="side-value"
+                        id="sideB"
+                    >
+                        12 cm
+                    </text>
+
 
                     <!-- c -->
-                    <text x="210" y="125" class="c-label">c = ?</text>
+
+                    <text
+                        x="210"
+                        y="125"
+                        class="c-label"
+                    >
+                        c = ?
+                    </text>
 
                 </svg>
 
@@ -661,12 +829,21 @@
 
         </div>
 
-        <!-- ANSWER -->
+
+        <!-- =========================
+             ANSWER
+        ========================= -->
+
         <div class="answer-area">
 
-            <label class="answer-label" for="answerInput" data-text="answerLabel">
+            <label
+                class="answer-label"
+                for="answerInput"
+                data-text="answerLabel"
+            >
                 Deine Antwort:
             </label>
+
 
             <div class="input-row">
 
@@ -678,72 +855,137 @@
                     placeholder="z. B. 13,00"
                 >
 
-                <span class="unit">cm</span>
+                <span class="unit">
+                    cm
+                </span>
 
             </div>
 
-            <button id="finishButton" data-text="finish">
+
+            <button
+                id="finishButton"
+                data-text="finish"
+            >
                 Fertig
             </button>
 
-            <button id="newTaskButton" data-text="newTask">
+
+            <button
+                id="newTaskButton"
+                data-text="newTask"
+            >
                 Neue Aufgabe
             </button>
 
         </div>
 
-        <!-- RESULT -->
+
+        <!-- =========================
+             RESULT
+        ========================= -->
+
         <div id="result">
 
-            <div class="result-title" id="resultTitle"></div>
+            <div
+                class="result-title"
+                id="resultTitle"
+            ></div>
 
-            <div id="resultMessage"></div>
 
-            <div class="solution" id="solution"></div>
+            <div
+                id="resultMessage"
+            ></div>
+
+
+            <div
+                class="solution"
+                id="solution"
+            ></div>
 
         </div>
 
     </section>
 
-    <!-- TOOLS -->
+
+    <!-- =========================
+         TOOLS
+    ========================= -->
+
     <section class="tools">
 
-        <button class="tool-button" id="notesButton">
-            📝 <span data-text="notes">Notiz</span>
+        <button
+            class="tool-button"
+            id="notesButton"
+        >
+            📝
+            <span data-text="notes">
+                Notiz
+            </span>
         </button>
 
-        <button class="tool-button" id="calculatorButton">
-            🧮 <span data-text="calculator">Rechner</span>
+
+        <button
+            class="tool-button"
+            id="calculatorButton"
+        >
+            🧮
+            <span data-text="calculator">
+                Rechner
+            </span>
         </button>
 
     </section>
 
-    <a href="index.html" class="back-home" data-text="backHome">
+
+    <a
+        href="index.html"
+        class="back-home"
+        data-text="backHome"
+    >
         ← Zurück zur Startseite
     </a>
 
 </main>
 
 
-<!-- NOTES MODAL -->
-<div class="modal-overlay" id="notesModal">
+<!-- =========================
+     NOTES MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="notesModal"
+>
 
     <div class="modal">
 
-        <h2 data-text="notesTitle">📝 Meine Notizen</h2>
+        <h2 data-text="notesTitle">
+            📝 Meine Notizen
+        </h2>
+
 
         <textarea
             id="notesArea"
             placeholder="Schreibe hier deine Notizen..."
         ></textarea>
 
+
         <div class="modal-buttons">
 
-            <button class="close-button" id="closeNotes" data-text="close">
+            <button
+                class="close-button"
+                id="closeNotes"
+                data-text="close"
+            >
                 Schließen
             </button>
 
-            <button class="save-button" id="saveNotes" data-text="save">
+
+            <button
+                class="save-button"
+                id="saveNotes"
+                data-text="save"
+            >
                 Speichern
             </button>
 
@@ -754,47 +996,229 @@
 </div>
 
 
-<!-- CALCULATOR MODAL -->
-<div class="modal-overlay" id="calculatorModal">
+<!-- =========================
+     CALCULATOR MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="calculatorModal"
+>
 
     <div class="modal">
 
-        <h2 data-text="calculatorTitle">🧮 Taschenrechner</h2>
+        <h2 data-text="calculatorTitle">
+            🧮 Taschenrechner
+        </h2>
+
 
         <div class="calculator">
 
-            <div class="calc-display" id="calcDisplay">0</div>
+            <div
+                class="calc-display"
+                id="calcDisplay"
+            >
+                0
+            </div>
 
-            <button class="calc-button calc-clear" onclick="clearCalculator()">C</button>
-            <button class="calc-button" onclick="deleteCalculator()">⌫</button>
-            <button class="calc-button" onclick="addCalculator('(')">(</button>
-            <button class="calc-button" onclick="addCalculator(')')">)</button>
 
-            <button class="calc-button" onclick="addCalculator('7')">7</button>
-            <button class="calc-button" onclick="addCalculator('8')">8</button>
-            <button class="calc-button" onclick="addCalculator('9')">9</button>
-            <button class="calc-button" onclick="addCalculator('/')">÷</button>
+            <!-- Row 1 -->
 
-            <button class="calc-button" onclick="addCalculator('4')">4</button>
-            <button class="calc-button" onclick="addCalculator('5')">5</button>
-            <button class="calc-button" onclick="addCalculator('6')">6</button>
-            <button class="calc-button" onclick="addCalculator('*')">×</button>
+            <button
+                class="calc-button calc-clear"
+                onclick="clearCalculator()"
+            >
+                C
+            </button>
 
-            <button class="calc-button" onclick="addCalculator('1')">1</button>
-            <button class="calc-button" onclick="addCalculator('2')">2</button>
-            <button class="calc-button" onclick="addCalculator('3')">3</button>
-            <button class="calc-button" onclick="addCalculator('-')">−</button>
 
-            <button class="calc-button" onclick="addCalculator('0')">0</button>
-            <button class="calc-button" onclick="addCalculator('.')">.</button>
-            <button class="calc-button calc-equals" onclick="calculateResult()">=</button>
-            <button class="calc-button" onclick="addCalculator('+')">+</button>
+            <button
+                class="calc-button"
+                onclick="deleteCalculator()"
+            >
+                ⌫
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('(')"
+            >
+                (
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator(')')"
+            >
+                )
+            </button>
+
+
+            <!-- Row 2 -->
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('7')"
+            >
+                7
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('8')"
+            >
+                8
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('9')"
+            >
+                9
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('/')"
+            >
+                ÷
+            </button>
+
+
+            <!-- Row 3 -->
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('4')"
+            >
+                4
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('5')"
+            >
+                5
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('6')"
+            >
+                6
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('*')"
+            >
+                ×
+            </button>
+
+
+            <!-- Row 4 -->
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('1')"
+            >
+                1
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('2')"
+            >
+                2
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('3')"
+            >
+                3
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('-')"
+            >
+                −
+            </button>
+
+
+            <!-- Row 5 -->
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('0')"
+            >
+                0
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('.')"
+            >
+                .
+            </button>
+
+
+            <button
+                class="calc-button calc-equals"
+                onclick="calculateResult()"
+            >
+                =
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="addCalculator('+')"
+            >
+                +
+            </button>
+
+
+            <!-- Row 6 -->
+
+            <button
+                class="calc-button"
+                onclick="squareCalculator()"
+            >
+                x²
+            </button>
+
+
+            <button
+                class="calc-button"
+                onclick="squareRootCalculator()"
+            >
+                √
+            </button>
 
         </div>
 
+
         <div class="modal-buttons">
 
-            <button class="close-button" id="closeCalculator" data-text="close">
+            <button
+                class="close-button"
+                id="closeCalculator"
+                data-text="close"
+            >
                 Schließen
             </button>
 
@@ -814,6 +1238,7 @@
 const translations = {
 
     de: {
+
         home: "Startseite",
         proof: "Beweis",
         learn: "Lernen",
@@ -862,9 +1287,12 @@ const translations = {
         wrongMessage: "Deine Antwort stimmt nicht. Hier ist der richtige Rechenweg:",
 
         solution: "Rechenweg:"
+
     },
 
+
     en: {
+
         home: "Home",
         proof: "Proof",
         learn: "Learn",
@@ -913,9 +1341,12 @@ const translations = {
         wrongMessage: "Your answer is incorrect. Here is the correct solution:",
 
         solution: "Solution:"
+
     },
 
+
     es: {
+
         home: "Inicio",
         proof: "Demostración",
         learn: "Aprender",
@@ -964,6 +1395,7 @@ const translations = {
         wrongMessage: "Tu respuesta es incorrecta. Aquí está la solución correcta:",
 
         solution: "Solución:"
+
     }
 
 };
@@ -973,41 +1405,63 @@ const translations = {
    LANGUAGE
 ========================================================= */
 
-let currentLanguage = localStorage.getItem("preferredLanguage") || "de";
+let currentLanguage =
+    localStorage.getItem("preferredLanguage") || "de";
 
-const languageSelect = document.getElementById("languageSelect");
+
+const languageSelect =
+    document.getElementById("languageSelect");
+
 
 languageSelect.value = currentLanguage;
+
 
 function updateLanguage() {
 
     const t = translations[currentLanguage];
 
+
     document.querySelectorAll("[data-text]").forEach(element => {
 
-        const key = element.getAttribute("data-text");
+        const key =
+            element.getAttribute("data-text");
+
 
         if (t[key]) {
+
             element.textContent = t[key];
+
         }
 
     });
 
-    document.getElementById("notesArea").placeholder = t.notesPlaceholder;
 
-    document.documentElement.lang = currentLanguage;
+    document.getElementById("notesArea").placeholder =
+        t.notesPlaceholder;
+
+
+    document.documentElement.lang =
+        currentLanguage;
 
 }
 
+
 languageSelect.addEventListener("change", () => {
 
-    currentLanguage = languageSelect.value;
+    currentLanguage =
+        languageSelect.value;
 
-    localStorage.setItem("preferredLanguage", currentLanguage);
+
+    localStorage.setItem(
+        "preferredLanguage",
+        currentLanguage
+    );
+
 
     updateLanguage();
 
 });
+
 
 updateLanguage();
 
@@ -1021,37 +1475,83 @@ let b;
 let correctC;
 let taskCount = 1;
 
+
 function randomNumber(min, max) {
 
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(
+        Math.random() * (max - min + 1)
+    ) + min;
 
 }
+
 
 function roundTwo(number) {
 
-    return Math.round((number + Number.EPSILON) * 100) / 100;
+    return Math.round(
+        (number + Number.EPSILON) * 100
+    ) / 100;
 
 }
 
+
 function createTask() {
 
+    /*
+       Generate two random side lengths
+       between 1 and 20 cm.
+    */
+
     a = randomNumber(1, 20);
+
     b = randomNumber(1, 20);
 
-    correctC = roundTwo(Math.sqrt(a * a + b * b));
 
-    document.getElementById("sideA").textContent = a + " cm";
-    document.getElementById("sideB").textContent = b + " cm";
+    /*
+       Pythagorean theorem:
 
-    document.getElementById("taskNumber").textContent = taskCount;
+       c² = a² + b²
 
-    const input = document.getElementById("answerInput");
+       c = √(a² + b²)
+    */
+
+    correctC =
+        roundTwo(
+            Math.sqrt(
+                a * a + b * b
+            )
+        );
+
+
+    document.getElementById("sideA").textContent =
+        a + " cm";
+
+
+    document.getElementById("sideB").textContent =
+        b + " cm";
+
+
+    document.getElementById("taskNumber").textContent =
+        taskCount;
+
+
+    const input =
+        document.getElementById("answerInput");
+
 
     input.value = "";
-    input.classList.remove("correct", "wrong");
 
-    document.getElementById("result").style.display = "none";
-    document.getElementById("result").className = "";
+    input.classList.remove(
+        "correct",
+        "wrong"
+    );
+
+
+    document.getElementById("result").style.display =
+        "none";
+
+
+    document.getElementById("result").className =
+        "";
 
 }
 
@@ -1060,41 +1560,85 @@ function createTask() {
    CHECK ANSWER
 ========================================================= */
 
-document.getElementById("finishButton").addEventListener("click", checkAnswer);
+document
+    .getElementById("finishButton")
+    .addEventListener("click", checkAnswer);
+
 
 function checkAnswer() {
 
-    const input = document.getElementById("answerInput");
+    const input =
+        document.getElementById("answerInput");
 
-    let userValue = input.value.trim();
+
+    let userValue =
+        input.value.trim();
+
 
     /*
-       Accept both:
-       12,34
-       12.34
+       Allow both German and English decimal notation:
+
+       13,25
+       13.25
     */
 
-    userValue = userValue.replace(",", ".");
+    userValue =
+        userValue.replace(",", ".");
 
-    const userNumber = Number(userValue);
 
-    const result = document.getElementById("result");
-    const resultTitle = document.getElementById("resultTitle");
-    const resultMessage = document.getElementById("resultMessage");
-    const solution = document.getElementById("solution");
+    const userNumber =
+        Number(userValue);
 
-    const t = translations[currentLanguage];
 
-    if (!userValue || Number.isNaN(userNumber)) {
+    const result =
+        document.getElementById("result");
+
+
+    const resultTitle =
+        document.getElementById("resultTitle");
+
+
+    const resultMessage =
+        document.getElementById("resultMessage");
+
+
+    const solution =
+        document.getElementById("solution");
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    /*
+       Empty or invalid input
+    */
+
+    if (
+        !userValue ||
+        Number.isNaN(userNumber)
+    ) {
 
         input.classList.remove("correct");
+
         input.classList.add("wrong");
 
-        result.className = "wrong-result";
-        result.style.display = "block";
 
-        resultTitle.textContent = t.wrongTitle;
-        resultMessage.textContent = t.wrongMessage;
+        result.className =
+            "wrong-result";
+
+
+        result.style.display =
+            "block";
+
+
+        resultTitle.textContent =
+            t.wrongTitle;
+
+
+        resultMessage.textContent =
+            t.wrongMessage;
+
 
         solution.innerHTML =
             `${t.solution}<br><br>
@@ -1108,30 +1652,46 @@ function checkAnswer() {
 
     }
 
-    /*
-       Compare rounded values.
-       This means:
-       13
-       13.0
-       13,00
 
-       are all accepted as 13.00.
+    /*
+       Round user's answer to two decimal places
     */
 
-    const roundedUser = roundTwo(userNumber);
+    const roundedUser =
+        roundTwo(userNumber);
 
-    const isCorrect = roundedUser === correctC;
+
+    /*
+       Compare the calculated result
+       with the user's result.
+    */
+
+    const isCorrect =
+        roundedUser === correctC;
+
 
     if (isCorrect) {
 
         input.classList.remove("wrong");
+
         input.classList.add("correct");
 
-        result.className = "correct-result";
-        result.style.display = "block";
 
-        resultTitle.textContent = t.correctTitle;
-        resultMessage.textContent = t.correctMessage;
+        result.className =
+            "correct-result";
+
+
+        result.style.display =
+            "block";
+
+
+        resultTitle.textContent =
+            t.correctTitle;
+
+
+        resultMessage.textContent =
+            t.correctMessage;
+
 
         solution.innerHTML =
             `${t.solution}<br><br>
@@ -1141,16 +1701,30 @@ function checkAnswer() {
             c = √${a * a + b * b}<br>
             c = ${correctC.toFixed(2)} cm`;
 
-    } else {
+    }
+
+    else {
 
         input.classList.remove("correct");
+
         input.classList.add("wrong");
 
-        result.className = "wrong-result";
-        result.style.display = "block";
 
-        resultTitle.textContent = t.wrongTitle;
-        resultMessage.textContent = t.wrongMessage;
+        result.className =
+            "wrong-result";
+
+
+        result.style.display =
+            "block";
+
+
+        resultTitle.textContent =
+            t.wrongTitle;
+
+
+        resultMessage.textContent =
+            t.wrongMessage;
+
 
         solution.innerHTML =
             `${t.solution}<br><br>
@@ -1169,112 +1743,174 @@ function checkAnswer() {
    NEW TASK
 ========================================================= */
 
-document.getElementById("newTaskButton").addEventListener("click", () => {
+document
+    .getElementById("newTaskButton")
+    .addEventListener("click", () => {
 
-    taskCount++;
+        taskCount++;
 
-    createTask();
+        createTask();
 
-});
+    });
 
 
 /* =========================================================
    NOTES
 ========================================================= */
 
-const notesModal = document.getElementById("notesModal");
-const notesArea = document.getElementById("notesArea");
+const notesModal =
+    document.getElementById("notesModal");
 
-notesArea.value = localStorage.getItem("pythagoreanNotes") || "";
 
-document.getElementById("notesButton").addEventListener("click", () => {
+const notesArea =
+    document.getElementById("notesArea");
 
-    notesModal.style.display = "flex";
 
-});
+notesArea.value =
+    localStorage.getItem(
+        "pythagoreanNotes"
+    ) || "";
 
-document.getElementById("closeNotes").addEventListener("click", () => {
 
-    notesModal.style.display = "none";
+document
+    .getElementById("notesButton")
+    .addEventListener("click", () => {
 
-});
+        notesModal.style.display =
+            "flex";
 
-document.getElementById("saveNotes").addEventListener("click", () => {
+    });
 
-    localStorage.setItem("pythagoreanNotes", notesArea.value);
 
-    notesModal.style.display = "none";
+document
+    .getElementById("closeNotes")
+    .addEventListener("click", () => {
 
-});
+        notesModal.style.display =
+            "none";
+
+    });
+
+
+document
+    .getElementById("saveNotes")
+    .addEventListener("click", () => {
+
+        localStorage.setItem(
+            "pythagoreanNotes",
+            notesArea.value
+        );
+
+
+        notesModal.style.display =
+            "none";
+
+    });
 
 
 /* =========================================================
    CALCULATOR
 ========================================================= */
 
-const calculatorModal = document.getElementById("calculatorModal");
-const calcDisplay = document.getElementById("calcDisplay");
+const calculatorModal =
+    document.getElementById("calculatorModal");
+
+
+const calcDisplay =
+    document.getElementById("calcDisplay");
+
 
 let calculatorValue = "";
+
+
+/*
+   Add a value to the calculator.
+*/
 
 function addCalculator(value) {
 
     calculatorValue += value;
 
-    calcDisplay.textContent = calculatorValue || "0";
+    calcDisplay.textContent =
+        calculatorValue || "0";
 
 }
+
+
+/*
+   Clear calculator.
+*/
 
 function clearCalculator() {
 
     calculatorValue = "";
 
-    calcDisplay.textContent = "0";
+    calcDisplay.textContent =
+        "0";
 
 }
+
+
+/*
+   Delete last character.
+*/
 
 function deleteCalculator() {
 
-    calculatorValue = calculatorValue.slice(0, -1);
+    calculatorValue =
+        calculatorValue.slice(0, -1);
 
-    calcDisplay.textContent = calculatorValue || "0";
+
+    calcDisplay.textContent =
+        calculatorValue || "0";
 
 }
 
-function calculateResult() {
+
+/*
+   x²
+
+   Example:
+
+   5 → x² → 25
+*/
+
+function squareCalculator() {
 
     if (!calculatorValue) return;
 
+
     try {
 
-        /*
-           Only basic mathematical characters are accepted.
-           This prevents arbitrary code from being entered.
-        */
+        const number =
+            Number(calculatorValue);
 
-        if (!/^[0-9+\-*/().\s]+$/.test(calculatorValue)) {
 
-            throw new Error();
-
-        }
-
-        const result = Function(
-            `"use strict"; return (${calculatorValue})`
-        )();
-
-        if (!Number.isFinite(result)) {
+        if (!Number.isFinite(number)) {
 
             throw new Error();
 
         }
 
-        calculatorValue = String(roundTwo(result));
 
-        calcDisplay.textContent = calculatorValue;
+        const result =
+            number * number;
 
-    } catch {
 
-        calcDisplay.textContent = "Error";
+        calculatorValue =
+            String(roundTwo(result));
+
+
+        calcDisplay.textContent =
+            calculatorValue;
+
+    }
+
+    catch {
+
+        calcDisplay.textContent =
+            "Error";
+
 
         calculatorValue = "";
 
@@ -1282,51 +1918,200 @@ function calculateResult() {
 
 }
 
-document.getElementById("calculatorButton").addEventListener("click", () => {
 
-    calculatorModal.style.display = "flex";
+/*
+   √
 
-});
+   Example:
 
-document.getElementById("closeCalculator").addEventListener("click", () => {
+   25 → √ → 5
+*/
 
-    calculatorModal.style.display = "none";
+function squareRootCalculator() {
 
-});
+    if (!calculatorValue) return;
 
 
-/* =========================================================
-   CLOSE MODALS WHEN CLICKING OUTSIDE
-========================================================= */
+    try {
 
-document.querySelectorAll(".modal-overlay").forEach(modal => {
+        const number =
+            Number(calculatorValue);
 
-    modal.addEventListener("click", event => {
 
-        if (event.target === modal) {
+        /*
+           Square root of a negative
+           number is not possible here.
+        */
 
-            modal.style.display = "none";
+        if (
+            !Number.isFinite(number) ||
+            number < 0
+        ) {
+
+            throw new Error();
 
         }
 
+
+        const result =
+            Math.sqrt(number);
+
+
+        calculatorValue =
+            String(roundTwo(result));
+
+
+        calcDisplay.textContent =
+            calculatorValue;
+
+    }
+
+    catch {
+
+        calcDisplay.textContent =
+            "Error";
+
+
+        calculatorValue = "";
+
+    }
+
+}
+
+
+/*
+   Calculate normal expression.
+
+   Example:
+
+   3 + 4 * 2
+*/
+
+function calculateResult() {
+
+    if (!calculatorValue) return;
+
+
+    try {
+
+        /*
+           Only allow numbers,
+           operators, brackets and decimal points.
+        */
+
+        if (
+            !/^[0-9+\-*/().\s]+$/.test(
+                calculatorValue
+            )
+        ) {
+
+            throw new Error();
+
+        }
+
+
+        const result =
+            Function(
+                `"use strict"; return (${calculatorValue})`
+            )();
+
+
+        if (!Number.isFinite(result)) {
+
+            throw new Error();
+
+        }
+
+
+        calculatorValue =
+            String(roundTwo(result));
+
+
+        calcDisplay.textContent =
+            calculatorValue;
+
+    }
+
+    catch {
+
+        calcDisplay.textContent =
+            "Error";
+
+
+        calculatorValue = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   OPEN CALCULATOR
+========================================================= */
+
+document
+    .getElementById("calculatorButton")
+    .addEventListener("click", () => {
+
+        calculatorModal.style.display =
+            "flex";
+
     });
 
-});
+
+/* =========================================================
+   CLOSE CALCULATOR
+========================================================= */
+
+document
+    .getElementById("closeCalculator")
+    .addEventListener("click", () => {
+
+        calculatorModal.style.display =
+            "none";
+
+    });
+
+
+/* =========================================================
+   CLOSE MODALS OUTSIDE
+========================================================= */
+
+document
+    .querySelectorAll(".modal-overlay")
+    .forEach(modal => {
+
+        modal.addEventListener("click", event => {
+
+            if (
+                event.target === modal
+            ) {
+
+                modal.style.display =
+                    "none";
+
+            }
+
+        });
+
+    });
 
 
 /* =========================================================
    ENTER KEY
 ========================================================= */
 
-document.getElementById("answerInput").addEventListener("keydown", event => {
+document
+    .getElementById("answerInput")
+    .addEventListener("keydown", event => {
 
-    if (event.key === "Enter") {
+        if (event.key === "Enter") {
 
-        checkAnswer();
+            checkAnswer();
 
-    }
+        }
 
-});
+    });
 
 
 /* =========================================================
