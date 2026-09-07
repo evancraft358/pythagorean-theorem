@@ -505,6 +505,64 @@
 
 
         /* =========================================
+           PAGE BUTTONS
+        ========================================= */
+
+        .page-navigation {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+            padding: 0 25px;
+        }
+
+        .page-navigation a {
+            flex: 1;
+            max-width: 320px;
+
+            padding: 18px 25px;
+
+            border-radius: 14px;
+
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            color: #f8fafc;
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            backdrop-filter: blur(15px);
+
+            transition: 0.25s;
+        }
+
+        .page-navigation a:hover {
+            transform: translateY(-3px);
+
+            background: rgba(51, 65, 85, 0.95);
+
+            border-color: rgba(96, 165, 250, 0.45);
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .proof-button {
+            color: #60a5fa !important;
+        }
+
+        .learn-button {
+            color: #a78bfa !important;
+        }
+
+
+        /* =========================================
            FIRST VISIT LANGUAGE MODAL
         ========================================= */
 
@@ -780,6 +838,17 @@
 
             .triangle-area {
                 min-height: 420px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+
+                margin: 0 20px 60px;
+                padding: 0;
+            }
+
+            .page-navigation a {
+                max-width: none;
             }
 
             .language-container {
@@ -1208,6 +1277,33 @@
 
         </section>
 
+
+        <!-- =====================================
+             PAGE NAVIGATION
+        ====================================== -->
+
+        <section class="page-navigation">
+
+            <a
+                href="beweis.html"
+                class="proof-button"
+            >
+                📐 <span data-text="proofButton">
+                    Proof of the Theorem
+                </span>
+            </a>
+
+            <a
+                href="lernen.html"
+                class="learn-button"
+            >
+                📚 <span data-text="learnButton">
+                    Learn
+                </span>
+            </a>
+
+        </section>
+
     </main>
 
 
@@ -1473,6 +1569,15 @@
                     "Interactive Mathematics Project",
 
 
+                /* PAGE BUTTONS */
+
+                proofButton:
+                    "Proof of the Theorem",
+
+                learnButton:
+                    "Learn",
+
+
                 /* LANGUAGE WINDOW */
 
                 chooseLanguage:
@@ -1568,6 +1673,15 @@
                     "Interaktives Mathematikprojekt",
 
 
+                /* PAGE BUTTONS */
+
+                proofButton:
+                    "Beweis des Satzes",
+
+                learnButton:
+                    "Lernen",
+
+
                 /* LANGUAGE WINDOW */
 
                 chooseLanguage:
@@ -1661,6 +1775,15 @@
 
                 footer:
                     "Proyecto de Matemáticas Interactivo",
+
+
+                /* PAGE BUTTONS */
+
+                proofButton:
+                    "Demostración del teorema",
+
+                learnButton:
+                    "Aprender",
 
 
                 /* LANGUAGE WINDOW */
@@ -2000,13 +2123,6 @@
             c
         ) {
 
-            /*
-                Keep the triangle inside the SVG.
-
-                The scale is calculated so that
-                large values still fit nicely.
-            */
-
             const maxSide =
                 Math.max(
                     a,
@@ -2117,16 +2233,7 @@
             );
 
 
-            /* =================================
-               LABELS
-
-               The labels are deliberately
-               placed farther away from the
-               triangle lines.
-            ================================= */
-
-
-            /* A - further left */
+            /* LABELS */
 
             labelA.setAttribute(
                 "x",
@@ -2139,8 +2246,6 @@
             );
 
 
-            /* B - further down */
-
             labelB.setAttribute(
                 "x",
                 100 + (width / 2) - 20
@@ -2151,8 +2256,6 @@
                 "335"
             );
 
-
-            /* C - further away from hypotenuse */
 
             labelC.setAttribute(
                 "x",
@@ -2231,12 +2334,6 @@
             );
 
 
-        /*
-            If the user has already selected
-            a language before, use it and
-            don't show the first-visit window.
-        */
-
         if (
             languageSelected === "true" &&
             savedLanguage &&
@@ -2251,12 +2348,6 @@
                 "none";
 
         } else {
-
-            /*
-                English is the default language
-                while the first-visit window
-                is visible.
-            */
 
             changeLanguage(
                 "en"
