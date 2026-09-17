@@ -80,23 +80,9 @@
         }
 
         .logo {
-            border: none;
-            background: transparent;
-
-            color: #f8fafc;
-
-            cursor: pointer;
-
-            font-family: inherit;
             font-size: 19px;
             font-weight: 700;
             letter-spacing: 0.5px;
-
-            padding: 0;
-        }
-
-        .logo:hover {
-            color: #ffffff;
         }
 
         .nav-links {
@@ -577,114 +563,6 @@
 
 
         /* =========================================
-           DEVELOPER ACCESS
-        ========================================= */
-
-        .developer-overlay {
-            position: fixed;
-            inset: 0;
-
-            z-index: 3000;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-
-            background: rgba(2, 6, 23, 0.78);
-
-            backdrop-filter: blur(8px);
-        }
-
-        .developer-modal {
-            position: relative;
-
-            width: 100%;
-            max-width: 390px;
-
-            padding: 32px;
-
-            border-radius: 22px;
-
-            background: rgba(30, 41, 59, 0.98);
-
-            border: 1px solid rgba(255, 255, 255, 0.1);
-
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
-
-            text-align: center;
-        }
-
-        .developer-modal h2 {
-            font-size: 28px;
-            margin-bottom: 22px;
-        }
-
-        .developer-modal input {
-            width: 100%;
-            margin-bottom: 12px;
-        }
-
-        .developer-open {
-            width: 100%;
-
-            padding: 13px;
-
-            border: none;
-            border-radius: 10px;
-
-            background: #3b82f6;
-            color: white;
-
-            font-size: 16px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        .developer-open:hover {
-            background: #2563eb;
-        }
-
-        .developer-close {
-            position: absolute;
-
-            top: 12px;
-            right: 15px;
-
-            border: none;
-            background: transparent;
-
-            color: #94a3b8;
-
-            font-size: 28px;
-            line-height: 1;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        .developer-close:hover {
-            color: white;
-        }
-
-        .developer-error {
-            display: none;
-
-            margin-top: 12px;
-
-            color: #f87171;
-
-            font-size: 14px;
-        }
-
-
-        /* =========================================
            FIRST VISIT LANGUAGE MODAL
         ========================================= */
 
@@ -978,10 +856,6 @@
                 right: 18px;
             }
 
-            .developer-modal {
-                padding: 28px 22px;
-            }
-
         }
 
 
@@ -1028,13 +902,9 @@
 
     <nav>
 
-        <button
-            class="logo"
-            id="developerButton"
-            data-text="logo"
-        >
+        <div class="logo" data-text="logo">
             Pythagorean Theorem
-        </button>
+        </div>
 
         <div class="nav-links">
 
@@ -1057,7 +927,7 @@
 
     <!-- =========================================
          HERO
-    ========================================== -->
+    ========================================= -->
 
     <main id="top">
 
@@ -1596,56 +1466,6 @@
                 </span>
 
             </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================
-         DEVELOPER ACCESS WINDOW
-    ========================================== -->
-
-    <div
-        class="developer-overlay"
-        id="developerOverlay"
-    >
-
-        <div class="developer-modal">
-
-            <button
-                class="developer-close"
-                id="developerClose"
-                aria-label="Close"
-            >
-                ×
-            </button>
-
-            <h2>
-                Developer Access
-            </h2>
-
-            <input
-                type="password"
-                id="developerCode"
-                placeholder="Enter access code"
-                maxlength="6"
-                inputmode="numeric"
-            >
-
-            <button
-                class="developer-open"
-                id="developerOpen"
-            >
-                Open
-            </button>
-
-            <p
-                class="developer-error"
-                id="developerError"
-            >
-                Incorrect code.
-            </p>
 
         </div>
 
@@ -2558,140 +2378,6 @@
                     languageMenu.classList.remove(
                         "open"
                     );
-
-                }
-
-            }
-        );
-
-
-        /* ========================================
-           DEVELOPER ACCESS
-        ======================================== */
-
-        const developerButton =
-            document.getElementById(
-                "developerButton"
-            );
-
-        const developerOverlay =
-            document.getElementById(
-                "developerOverlay"
-            );
-
-        const developerClose =
-            document.getElementById(
-                "developerClose"
-            );
-
-        const developerOpen =
-            document.getElementById(
-                "developerOpen"
-            );
-
-        const developerCode =
-            document.getElementById(
-                "developerCode"
-            );
-
-        const developerError =
-            document.getElementById(
-                "developerError"
-            );
-
-
-        /* OPEN DEVELOPER WINDOW */
-
-        developerButton.addEventListener(
-            "click",
-            function () {
-
-                developerOverlay.style.display =
-                    "flex";
-
-                developerCode.focus();
-
-            }
-        );
-
-
-        /* CLOSE DEVELOPER WINDOW */
-
-        developerClose.addEventListener(
-            "click",
-            function () {
-
-                developerOverlay.style.display =
-                    "none";
-
-                developerCode.value =
-                    "";
-
-                developerError.style.display =
-                    "none";
-
-            }
-        );
-
-
-        /* OPEN DEV PAGE */
-
-        developerOpen.addEventListener(
-            "click",
-            function () {
-
-                if (
-                    developerCode.value ===
-                    "777333"
-                ) {
-
-                    window.location.href =
-                        "DEIN-DEV-LINK-HIER";
-
-                } else {
-
-                    developerError.style.display =
-                        "block";
-
-                    developerCode.focus();
-
-                }
-
-            }
-        );
-
-
-        /* ENTER KEY */
-
-        developerCode.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key ===
-                    "Enter"
-                ) {
-
-                    developerOpen.click();
-
-                }
-
-            }
-        );
-
-
-        /* CLOSE WITH ESCAPE */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape" &&
-                    developerOverlay.style.display === "flex"
-                ) {
-
-                    developerClose.click();
 
                 }
 
